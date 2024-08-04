@@ -5,4 +5,4 @@ export interface IButtonProps {
 const Button: FC<IButtonProps> = () => {
   return <div>Button</div>;
 };
-export default Button;
+export { Button };

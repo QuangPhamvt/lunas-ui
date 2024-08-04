@@ -13,8 +13,8 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: [resolve(__dirname, "src/components/index.ts")],
-      name: "EcommerceUI",
+      entry: [resolve(__dirname, "./index.ts")],
+      name: "@customafk/e-commerce-ui",
       formats: ["es", "cjs"],
       fileName: (format, entryName) => `${entryName}.${format}.js`
     },
