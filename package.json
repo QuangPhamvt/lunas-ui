@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
-    "url": "https://github.com/QuangPhamvt/e-commerce-ui"
+    "url": "git+https://github.com/QuangPhamvt/e-commerce-ui.git"
   },
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
@@ -40,5 +40,11 @@
     "vite": "^5.2.13",
     "vite-plugin-dts": "^3.9.0",
     "vite-tsconfig-paths": "^4.3.2"
-  }
+  },
+  "description": "This is a e-commerce UI library for CustomAFK",
+  "bugs": {
+    "url": "https://github.com/QuangPhamvt/e-commerce-ui/issues"
+  },
+  "author": "CustomAFK",
+  "license": "ISC"
 }
