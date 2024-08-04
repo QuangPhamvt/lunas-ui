@@ -32,3 +32,6 @@ lerna-debug.log*
 
 README.md
 
+
+.storybook
+storybook-static

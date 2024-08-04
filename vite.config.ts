@@ -24,6 +24,8 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "jsxRuntime",
+          "clsx": "clsx",
+          "tailwind-merge": "tailwindMerge",
         },
       },
     },
