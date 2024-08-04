@@ -1,8 +1,11 @@
 /src
 /node_modules
+.git
+
+.eslintrc.cjs
+.gitignore
 
 package-lock.json
-.gitignore
 
 # Logs
 logs

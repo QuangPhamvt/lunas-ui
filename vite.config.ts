@@ -8,15 +8,14 @@ import { resolve } from "path";
 export default defineConfig({
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
+      "@": resolve(__dirname, "./packages"),
     },
   },
   build: {
     lib: {
-      entry: [resolve(__dirname, "./index.ts")],
-      name: "@customafk/e-commerce-ui",
-      formats: ["es", "cjs"],
-      fileName: (format, entryName) => `${entryName}.${format}.js`
+      entry: [resolve(__dirname, "packages/index.ts")],
+      name: "EcommerceUI",
+      fileName: 'index'
     },
     rollupOptions: {
       external: ["react", "react-dom", "react/jsx-runtime"],
@@ -24,7 +23,7 @@ export default defineConfig({
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-          "react/jsx-runtime": "jsxRuntime"
+          "react/jsx-runtime": "jsxRuntime",
         },
       },
     },
