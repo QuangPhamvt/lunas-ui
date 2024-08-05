@@ -1,30 +1,49 @@
-# React + TypeScript + Vite
+# E-Commerce UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🤔 What is this project?
 
-Currently, two official plugins are available:
+This is a component library for any e-commerce web project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚡ Installation
 
-## Expanding the ESLint configuration
+1. Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   - `Node.js >= 20.x`
+   - `Yarn >= 4.x`
 
-- Configure the top-level `parserOptions` property like this:
+2. Clone repository
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+   - `git clone https://github.com/QuangPhamvt/e-commerce-ui.git`
+
+3. Install packages
+
+   - `yarn`
+
+4. Run
+
+   - `yarn run sb`
+   - Go to [localhost:6006](localhost:6006)
+
+## ❔ How to push
+
+- Role commit: `{type}: {subject}`
+
+  - type: feature (feat) | fix | style | refactor | documentation (doc) | test | build
+  - subject: write a concise description of the change
+  <!-- - # (TODO) Automatic: check lint and format pre-commit -->
+
+- Example:
+
+```bash
+git commit -m "{type}: {subject}"
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+| **Type**      | **Description**                                                                                        |
+| :------------ | :----------------------------------------------------------------------------------------------------- |
+| feature       | A new feature                                                                                          |
+| fix           | A bug fix                                                                                              |
+| style         | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) |
+| refactor      | Changes that restructure the code without adding new features                                          |
+| documentation | Changes to documentation only                                                                          |
+| test          | Changes that add or modify existing tests                                                              |
+| build         | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)    |
