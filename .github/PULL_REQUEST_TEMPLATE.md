@@ -1,4 +1,4 @@
-# PULL REQUEST
+# Pull Request
 
 ## What type of PR is this?
 
