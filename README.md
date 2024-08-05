@@ -22,7 +22,7 @@ This is a component library for any e-commerce web project.
 4. Run
 
    - `yarn run sb`
-   - Go to [localhost:6006](localhost:6006)
+   - Go to [localhost:6006](http://localhost:6006)
 
 ## ❔ How to push
 
