@@ -1,9 +1,9 @@
 ---
 name: 🚀 Feature Request
 about: Suggest an idea for this project
-title: '[FEATURE] <title>'
-labels: Feature
-assignees: @xx
+title: ''
+labels: enhancement
+assignees: @Jackesque
 ---
 
 ### Describe The Feature

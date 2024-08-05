@@ -2,8 +2,8 @@
 name: 🚩 Issue
 about: Create a new issue
 title: ''
-labels: Issue
-assignees: @xx
+labels: 
+assignees: @Jackesque
 ---
 
 ### Describe The Issue
