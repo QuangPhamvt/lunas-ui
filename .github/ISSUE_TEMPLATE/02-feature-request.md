@@ -8,7 +8,7 @@ assignees: @xx
 
 ### Describe The Feature
 
-<!-- A clear and concise description of what the problem is. -->
+<!-- A clear and concise description of what the feature is. -->
 
 Is it related to a bug?
 
