@@ -1,9 +1,9 @@
 ---
 name: 🐞 Bug Report
 about: File a bug report
-title: '[BUG] <title>'
-labels: Bug
-assignees: @xx
+title: ''
+labels: bug
+assignees: @Jackesque
 ---
 
 > _Note: Please search to see if an issue already exists for the bug you encountered._
