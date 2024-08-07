@@ -1,81 +1,112 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
+import { Meta, StoryObj } from '@storybook/react'
+import { Button } from './Button'
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Atoms/Button",
-  tags: ["autodocs"],
+  title: 'Components/Atoms/Button',
+  tags: ['autodocs'],
   component: Button,
-  argTypes: {},
-};
+  argTypes: {
+    variant: {
+      options: [
+        'default',
+        'secondary',
+        'outline',
+        'ghost',
+        'destructive',
+        'destructive-outline',
+        'destructive-ghost',
+        'accept',
+        'accept-outline',
+        'normal',
+      ],
+      control: { type: 'select' },
+    },
+    size: {
+      control: false,
+    },
+  },
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
+    variant: 'default',
+    size: 'default',
+    icon: true,
     children: <span>Button</span>,
+    disabled: false,
   },
-};
+}
+
+export const Disabled: Story = {
+  args: {
+    children: <span>Button</span>,
+    icon: true,
+    disabled: true,
+  },
+}
 
 export const Secondary: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "secondary",
+    variant: 'secondary',
   },
-};
+}
 
 export const Outline: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "outline",
+    variant: 'outline',
   },
-};
+}
 
 export const Ghost: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "ghost",
+    variant: 'ghost',
   },
-};
+}
 
 export const Destructive: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "destructive",
+    variant: 'destructive',
   },
-};
+}
 
 export const DestructiveOutline: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "destructive-outline",
+    variant: 'destructive-outline',
   },
-};
+}
 
 export const DestructiveGhost: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "destructive-ghost",
+    variant: 'destructive-ghost',
   },
-};
+}
 
 export const Accept: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "accept",
+    variant: 'accept',
   },
-};
+}
 
 export const AcceptOutline: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "accept-outline",
+    variant: 'accept-outline',
   },
-};
+}
 
 export const Normal: Story = {
   args: {
     children: <span>Button</span>,
-    variant: "normal",
+    variant: 'normal',
   },
-};
+}
