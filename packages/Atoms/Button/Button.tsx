@@ -17,18 +17,15 @@ const buttonVariants = cva(
           'border border-solid border-btn-primary-start text-primary enabled:active:bg-white enabled:active:shadow-sd-primary',
         ghost: 'bg-white text-primary enabled:active:shadow-sd-primary',
         destructive: 'bg-[#FF4858] enabled:active:shadow-sd-destructive',
-        // TODO: add bg color to gradient text
-        // https://stackoverflow.com/questions/74307760/gradient-text-on-button-without-losing-background-color
         'destructive-outline':
-          'border border-solid border-btn-destructive-start bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-destructive-start from-[7.07%] to-btn-destructive-end to-[92.93%] bg-clip-text text-transparent enabled:active:bg-white enabled:active:shadow-sd-destructive',
+          'relative border border-solid border-btn-destructive-start bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-destructive-start from-[7.07%] to-btn-destructive-end to-[92.93%] bg-clip-text text-transparent before:pointer-events-none before:absolute before:-z-[1] before:size-full before:rounded before:content-[""] enabled:active:shadow-sd-destructive enabled:active:before:bg-white',
         'destructive-ghost':
-          'bg-white bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-destructive-start from-[7.07%] to-btn-destructive-end to-[92.93%] bg-clip-text text-transparent enabled:active:shadow-sd-destructive',
+          'relative bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-destructive-start from-[7.07%] to-btn-destructive-end to-[92.93%] bg-clip-text text-transparent before:pointer-events-none before:absolute before:-z-[1] before:size-full before:rounded before:bg-white before:content-[""] enabled:hover:opacity-100 enabled:hover:before:opacity-80 enabled:active:shadow-sd-destructive enabled:active:before:opacity-100 disabled:opacity-100 disabled:before:opacity-60',
         accept:
           'bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-accept-start from-[6.81%] to-btn-accept-end to-[93.19%] enabled:active:shadow-sd-accept',
         'accept-outline':
-          'border border-solid border-btn-accept-start bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-accept-start from-[6.81%] to-btn-accept-end to-[93.19%] bg-clip-text text-transparent enabled:active:bg-white enabled:active:shadow-sd-destructive enabled:active:shadow-xl',
-        normal:
-          'border border-solid border-black bg-white text-black enabled:active:shadow-sd-accept',
+          'relative border border-solid border-btn-accept-start bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-accept-start from-[6.81%] to-btn-accept-end to-[93.19%] bg-clip-text text-transparent before:pointer-events-none before:absolute before:-z-[1] before:size-full before:rounded before:bg-white before:content-[""] enabled:hover:opacity-100 enabled:hover:before:opacity-80 enabled:active:shadow-sd-accept enabled:active:before:opacity-100 disabled:opacity-100 disabled:before:opacity-40',
+        normal: 'border border-solid border-black bg-white text-black enabled:active:shadow-xl',
       },
       size: {
         default: '',
@@ -67,7 +64,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {icon && (
           <>
             {['destructive-outline', 'destructive-ghost'].includes(variant!) && (
-              <svg width="0" height="0">
+              <svg width="0" height="0" className="pointer-events-none absolute">
                 <linearGradient
                   id="icon-gradient"
                   x1="12.3049"
@@ -82,7 +79,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               </svg>
             )}
             {variant === 'accept-outline' && (
-              <svg width="0" height="0">
+              <svg width="0" height="0" className="pointer-events-none absolute">
                 <linearGradient
                   id="icon-gradient"
                   x1="12.3439"

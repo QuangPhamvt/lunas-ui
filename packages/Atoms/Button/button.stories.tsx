@@ -34,7 +34,7 @@ export const Default: Story = {
   args: {
     variant: 'default',
     size: 'default',
-    icon: true,
+    icon: false,
     children: <span>Button</span>,
     disabled: false,
   },
@@ -43,8 +43,14 @@ export const Default: Story = {
 export const Disabled: Story = {
   args: {
     children: <span>Button</span>,
-    icon: true,
     disabled: true,
+  },
+}
+
+export const Icon: Story = {
+  args: {
+    children: <span>Button</span>,
+    icon: true,
   },
 }
 
