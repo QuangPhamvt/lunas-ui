@@ -35,84 +35,84 @@ export const Default: Story = {
     variant: 'default',
     size: 'default',
     icon: false,
-    children: <span>Button</span>,
+    children: 'Button',
     disabled: false,
   },
 }
 
 export const Disabled: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     disabled: true,
   },
 }
 
 export const Icon: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     icon: true,
   },
 }
 
 export const Secondary: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'secondary',
   },
 }
 
 export const Outline: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'outline',
   },
 }
 
 export const Ghost: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'ghost',
   },
 }
 
 export const Destructive: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'destructive',
   },
 }
 
 export const DestructiveOutline: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'destructive-outline',
   },
 }
 
 export const DestructiveGhost: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'destructive-ghost',
   },
 }
 
 export const Accept: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'accept',
   },
 }
 
 export const AcceptOutline: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'accept-outline',
   },
 }
 
 export const Normal: Story = {
   args: {
-    children: <span>Button</span>,
+    children: 'Button',
     variant: 'normal',
   },
 }
