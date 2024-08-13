@@ -4,7 +4,6 @@ import { Github } from 'lucide-react'
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Atoms/Button',
-  tags: ['autodocs'],
   component: Button,
   argTypes: {
     variant: {
@@ -67,7 +66,7 @@ const meta: Meta<typeof Button> = {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
-      control: 'boolean',
+      control: false,
     },
   },
 }
