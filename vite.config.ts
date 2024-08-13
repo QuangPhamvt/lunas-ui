@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       entry: [
         resolve(__dirname, 'packages/index.ts'),
-        resolve(__dirname, 'packages/tailwindTheme.js'),
+        // resolve(__dirname, 'packages/tailwindTheme.ts'),
       ],
       name: 'EcommerceUI',
       fileName: 'index',
