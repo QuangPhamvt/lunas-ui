@@ -1,11 +1,11 @@
 {
-  "name": "@customafk/e-commerce-ui",
+  "name": "@customafk/lunas-ui",
   "private": false,
-  "version": "0.0.0-j",
+  "version": "0.0.0-a",
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
-    "url": "git+https://github.com/QuangPhamvt/e-commerce-ui.git"
+    "url": "git+https://github.com/QuangPhamvt/lunas-ui.git"
   },
   "files": [
     "dist"

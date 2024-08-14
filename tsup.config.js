@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entryPoints: [
     "./packages/Atoms/index.ts",
-    "./packages/index.css"
+    "./packages/tailwindTheme.js"
   ],
   target: 'es2021',
   format: ["esm"],
