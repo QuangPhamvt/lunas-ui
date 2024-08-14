@@ -1,27 +1,27 @@
 import { cva } from 'class-variance-authority'
 
 export const buttonVariants = cva(
-  'flex items-center justify-center gap-1 rounded-md px-3 py-1 text-base font-semibold text-white enabled:hover:opacity-80 enabled:active:opacity-100 disabled:cursor-not-allowed disabled:opacity-40',
+  'text-ui-white-primary flex items-center justify-center gap-1 rounded-md px-3 py-1 text-base font-semibold enabled:hover:opacity-80 enabled:active:opacity-100 disabled:cursor-not-allowed disabled:opacity-40',
   {
     variants: {
       variant: {
-        default:
-          'bg-gradient-to-b from-btn-primary-start to-btn-primary-end enabled:active:opacity-95 enabled:active:shadow-sd-primary',
-        secondary:
-          'bg-gradient-to-b from-btn-secondary-start to-btn-secondary-end enabled:active:shadow-sd-base',
+        default: 'bg-ui-btn-primary enabled:active:shadow-ui-sd-primary enabled:active:opacity-95',
+        secondary: 'bg-ui-btn-secondary enabled:active:shadow-ui-sd-base',
         outline:
-          'border border-solid border-btn-primary-start text-primary enabled:active:bg-white enabled:active:shadow-sd-primary',
-        ghost: 'bg-white text-primary enabled:active:shadow-sd-primary',
-        destructive: 'bg-[#FF4858] enabled:active:shadow-sd-destructive',
+          'text-ui-primary border-ui-primary enabled:active:shadow-ui-sd-primary border border-solid enabled:active:opacity-80',
+        ghost:
+          'text-ui-primary bg-ui-white enabled:active:shadow-ui-sd-primary enabled:active:opacity-80',
+        destructive:
+          'bg-ui-btn-destructive text-ui-white-primary enabled:active:shadow-ui-sd-destructive',
         'destructive-outline':
-          'relative border border-solid border-btn-destructive-start bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-destructive-start from-[7.07%] to-btn-destructive-end to-[92.93%] bg-clip-text text-transparent before:pointer-events-none before:absolute before:-z-[1] before:size-full before:rounded before:content-[""] enabled:active:shadow-sd-destructive enabled:active:before:bg-white',
+          'text-ui-destruction-flat border-ui-destruction-flat enabled:active:shadow-ui-sd-destructive border border-solid',
         'destructive-ghost':
-          'relative bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-destructive-start from-[7.07%] to-btn-destructive-end to-[92.93%] bg-clip-text text-transparent before:pointer-events-none before:absolute before:-z-[1] before:size-full before:rounded before:bg-white before:content-[""] enabled:hover:opacity-100 enabled:hover:before:opacity-80 enabled:active:shadow-sd-destructive enabled:active:before:opacity-100 disabled:opacity-100 disabled:before:opacity-60',
-        accept:
-          'bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-accept-start from-[6.81%] to-btn-accept-end to-[93.19%] enabled:active:shadow-sd-accept',
+          'text-ui-destruction-flat border-ui-destruction-flat bg-ui-white enabled:active:shadow-ui-sd-destructive border border-solid disabled:opacity-60',
+        accept: 'bg-ui-btn-accept text-ui-white-primary enabled:active:shadow-ui-sd-accept',
         'accept-outline':
-          'relative border border-solid border-btn-accept-start bg-[linear-gradient(282deg,var(--tw-gradient-stops))] from-btn-accept-start from-[6.81%] to-btn-accept-end to-[93.19%] bg-clip-text text-transparent before:pointer-events-none before:absolute before:-z-[1] before:size-full before:rounded before:bg-white before:content-[""] enabled:hover:opacity-100 enabled:hover:before:opacity-80 enabled:active:shadow-sd-accept enabled:active:before:opacity-100 disabled:opacity-100 disabled:before:opacity-40',
-        normal: 'border border-solid border-black bg-white text-black enabled:active:shadow-xl',
+          'text-ui-positive-flat border-ui-positive-flat bg-ui-white enabled:active:shadow-ui-sd-accept border border-solid',
+        normal:
+          'border-ui-black bg-ui-white text-ui-black enabled:active:shadow-ui-xl border border-solid',
       },
       size: {
         default: '',

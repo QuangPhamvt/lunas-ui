@@ -4,10 +4,18 @@ import { Github } from 'lucide-react'
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Atoms/Button',
-  tags: ['autodocs'],
   component: Button,
   argTypes: {
     variant: {
+      description: 'The variant of the button.',
+      table: {
+        type: {
+          summary: 'string',
+          detail:
+            'default | secondary | outline | ghost | destructive | destructive-outline | destructive-ghost | accept | accept-outline | normal',
+        },
+        defaultValue: { summary: 'default' },
+      },
       options: [
         'default',
         'secondary',
@@ -23,6 +31,41 @@ const meta: Meta<typeof Button> = {
       control: { type: 'select' },
     },
     size: {
+      description: 'The size of the button.',
+      table: {
+        type: { summary: 'string', detail: 'default' },
+        defaultValue: { summary: 'default' },
+      },
+      control: false,
+    },
+    icon: {
+      description: 'The icon to display on the button. Lucide Icons are recommended.',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+      control: false,
+    },
+    children: {
+      description: 'The content of the button.',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    disabled: {
+      description: 'Controls whether the button is disabled.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+      control: 'boolean',
+    },
+    asChild: {
+      description:
+        "Controls whether its children apply the button's props. Read more: <a href='https://www.radix-ui.com/primitives/docs/utilities/slot' target='_blank' style='text-decoration: underline;'>https://www.radix-ui.com/primitives/docs/utilities/slot</a>",
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
       control: false,
     },
   },
@@ -33,10 +76,12 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
+<<<<<<< HEAD
     variant: 'default',
     size: 'default',
+=======
+>>>>>>> origin/issue#12
     children: 'Button',
-    disabled: false,
   },
 }
 
@@ -50,7 +95,7 @@ export const Disabled: Story = {
 export const Icon: Story = {
   args: {
     children: 'Button',
-    icon: <Github size={16} />,
+    icon: <Github />,
   },
 }
 
