@@ -1,7 +1,7 @@
 {
   "name": "@customafk/lunas-ui",
   "private": false,
-  "version": "0.0.0-a",
+  "version": "0.0.0-b",
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
@@ -10,17 +10,19 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/Atoms/index.js",
+  "module": "./dist/Atoms/index.js",
+  "types": "./dist/Atoms/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+    "./Atom": {
+      "import": "./dist/Atoms/index.js",
+      "require": "./dist/Atoms/index.js",
+      "types":"./dist/Atoms/index.d.ts"
     },
     "./tailwindTheme": {
       "import": "./dist/tailwindTheme.js",
-      "require": "./dist/tailwindTheme.cjs"
+      "require": "./dist/tailwindTheme.js",
+      "types":"./dist/tailwindTheme.d.ts"
     }
   },
   "scripts": {
