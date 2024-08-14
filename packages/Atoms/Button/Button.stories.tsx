@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Button } from './Button'
+import { Github } from 'lucide-react'
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Atoms/Button',
@@ -34,7 +35,6 @@ export const Default: Story = {
   args: {
     variant: 'default',
     size: 'default',
-    icon: false,
     children: 'Button',
     disabled: false,
   },
@@ -50,7 +50,7 @@ export const Disabled: Story = {
 export const Icon: Story = {
   args: {
     children: 'Button',
-    icon: true,
+    icon: <Github size={16} />,
   },
 }
 

@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsup",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "fmt": "prettier --check \"./packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "fmt:fix": "prettier --write \"./packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
@@ -28,7 +28,6 @@
     "build-sb": "storybook build"
   },
   "dependencies": {
-    "@fontsource/be-vietnam-pro": "^5.0.20",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -48,7 +47,6 @@
     "@storybook/react": "^8.2.7",
     "@storybook/react-vite": "^8.2.7",
     "@storybook/test": "^8.2.7",
-    "@types/node": "^22.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -65,10 +63,11 @@
     "prettier-plugin-tailwindcss": "^0.6.5",
     "storybook": "^8.2.7",
     "tailwindcss": "^3.4.7",
+    "tsup": "^8.2.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.13",
-    "vite-plugin-dts": "^3.9.0",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^4.3.2",
+    "@types/bun": "latest"
   },
   "description": "This is a e-commerce UI library for CustomAFK",
   "bugs": {
