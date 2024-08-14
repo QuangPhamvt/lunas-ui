@@ -1,26 +1,32 @@
 {
-  "name": "@customafk/e-commerce-ui",
+  "name": "@customafk/lunas-ui",
   "private": false,
-  "version": "0.0.0-i",
+  "version": "0.0.0-b",
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
-    "url": "git+https://github.com/QuangPhamvt/e-commerce-ui.git"
+    "url": "git+https://github.com/QuangPhamvt/lunas-ui.git"
   },
   "files": [
     "dist"
   ],
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/Atoms/index.js",
+  "module": "./dist/Atoms/index.js",
+  "types": "./dist/Atoms/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+    "./Atom": {
+      "import": "./dist/Atoms/index.js",
+      "require": "./dist/Atoms/index.js",
+      "types":"./dist/Atoms/index.d.ts"
+    },
+    "./tailwindTheme": {
+      "import": "./dist/tailwindTheme.js",
+      "require": "./dist/tailwindTheme.js",
+      "types":"./dist/tailwindTheme.d.ts"
     }
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsup",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "fmt": "prettier --check \"./packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "fmt:fix": "prettier --write \"./packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
@@ -28,7 +34,10 @@
     "build-sb": "storybook build"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.424.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.4.0"
@@ -44,7 +53,6 @@
     "@storybook/react": "^8.2.7",
     "@storybook/react-vite": "^8.2.7",
     "@storybook/test": "^8.2.7",
-    "@types/node": "^22.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -58,12 +66,14 @@
     "eslint-plugin-storybook": "^0.8.0",
     "postcss": "^8.4.40",
     "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "storybook": "^8.2.7",
     "tailwindcss": "^3.4.7",
+    "tsup": "^8.2.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.13",
-    "vite-plugin-dts": "^3.9.0",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^4.3.2",
+    "@types/bun": "latest"
   },
   "description": "This is a e-commerce UI library for CustomAFK",
   "bugs": {
