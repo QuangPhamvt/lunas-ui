@@ -76,11 +76,6 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-<<<<<<< HEAD
-    variant: 'default',
-    size: 'default',
-=======
->>>>>>> origin/issue#12
     children: 'Button',
   },
 }

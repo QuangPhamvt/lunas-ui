@@ -1,4 +1,5 @@
 import { withThemeByClassName } from '@storybook/addon-themes'
+import '../packages/index.css'
 import type { Preview } from '@storybook/react'
 
 const preview: Preview = {
