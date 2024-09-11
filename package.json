@@ -1,7 +1,7 @@
 {
   "name": "@customafk/lunas-ui",
   "private": false,
-  "version": "0.0.0-e",
+  "version": "0.0.0-i",
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
@@ -14,15 +14,15 @@
   "module": "./dist/Atoms/index.js",
   "types": "./dist/Atoms/index.d.ts",
   "exports": {
-    "./Atom": {
+    "./Atoms": {
+      "types":"./dist/Atoms/index.d.ts",
       "import": "./dist/Atoms/index.js",
-      "require": "./dist/Atoms/index.js",
-      "types":"./dist/Atoms/index.d.ts"
+      "require": "./dist/Atoms/index.js"
     },
     "./tailwindTheme": {
+      "types":"./dist/tailwindTheme.d.ts",
       "import": "./dist/tailwindTheme.js",
-      "require": "./dist/tailwindTheme.js",
-      "types":"./dist/tailwindTheme.d.ts"
+      "require": "./dist/tailwindTheme.js"
     }
   },
   "scripts": {
@@ -33,7 +33,7 @@
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

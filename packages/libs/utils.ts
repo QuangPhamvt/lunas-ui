@@ -1,5 +1,13 @@
+import tailwindTheme from '@/tailwindTheme'
 import clsx, { ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { extendTailwindMerge } from 'tailwind-merge'
+
+const customTailwindMerge = () => {
+  return extendTailwindMerge({
+    ...tailwindTheme,
+    prefix: '',
+  })
+}
 
 /**
  * A utility function to merge tailwind and clsx classes
@@ -7,5 +15,6 @@ import { twMerge } from 'tailwind-merge'
  * @returns The merged classes
  */
 export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(inputs))
+  const customTwMerge = customTailwindMerge()
+  return customTwMerge(clsx(inputs))
 }
