@@ -19,6 +19,11 @@
       "import": "./dist/Atoms/index.js",
       "require": "./dist/Atoms/index.js"
     },
+    "./Organisms": {
+      "types":"./dist/Organisms/index.d.ts",
+      "import": "./dist/Organisms/index.js",
+      "require": "./dist/Organisms/index.js"
+    },
     "./tailwindTheme": {
       "types":"./dist/tailwindTheme.d.ts",
       "import": "./dist/tailwindTheme.js",
