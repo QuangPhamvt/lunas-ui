@@ -13,14 +13,14 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    icon: <ChartBarStacked/>,
+    icon: <ChartBarStacked />,
     children: 'Danh mục',
   },
 }
 
 export const Active: Story = {
   args: {
-    icon: <ChartBarStacked/>,
+    icon: <ChartBarStacked />,
     children: 'Danh mục',
     variant: 'active',
   },
@@ -28,7 +28,7 @@ export const Active: Story = {
 
 export const Disabled: Story = {
   args: {
-    icon: <ChartBarStacked/>,
+    icon: <ChartBarStacked />,
     children: 'Danh mục',
     variant: 'disabled',
   },
@@ -36,7 +36,7 @@ export const Disabled: Story = {
 
 export const Hover: Story = {
   args: {
-    icon: <ChartBarStacked/>,
+    icon: <ChartBarStacked />,
     children: 'Danh mục',
     variant: 'hover',
   },
@@ -44,7 +44,7 @@ export const Hover: Story = {
 
 export const ChevronDisabled: Story = {
   args: {
-    icon: <ChartBarStacked/>,
+    icon: <ChartBarStacked />,
     children: 'Danh mục',
     onChevron: 'disabled',
   },
@@ -52,7 +52,7 @@ export const ChevronDisabled: Story = {
 
 export const AnotherExample: Story = {
   args: {
-    icon: <Rows2/>,
+    icon: <Rows2 />,
     children: 'Series',
     variant: 'active',
     onChevron: 'disabled',
@@ -61,7 +61,7 @@ export const AnotherExample: Story = {
 
 export const AnotherExample2: Story = {
   args: {
-    icon: <Book/>,
+    icon: <Book />,
     children: 'Hướng dẫn',
     variant: 'disabled',
     onChevron: 'disabled',
@@ -70,9 +70,8 @@ export const AnotherExample2: Story = {
 
 export const AnotherExample3: Story = {
   args: {
-    icon: <Newspaper/>,
+    icon: <Newspaper />,
     children: 'Tin tức',
     variant: 'hover',
   },
 }
-

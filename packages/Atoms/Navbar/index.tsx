@@ -15,7 +15,10 @@ interface NavbarItemProps
 }
 
 const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
-  ({ className, state, variant, chevron, children, icon, onChevron='enabled', ...props }, ref) => {
+  (
+    { className, state, variant, chevron, children, icon, onChevron = 'enabled', ...props },
+    ref,
+  ) => {
     return (
       <div
         ref={ref}
@@ -29,7 +32,13 @@ const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
         {icon && <div className="flex size-4 items-center">{icon}</div>}
         <p className="font-semibold leading-6">{children}</p>
         <div className="">
-          <ChevronDown className={cn('mt-0.5 size-4', onChevron === 'enabled' ? '' : 'hidden', NavbarVariants({ chevron: variant }))} />
+          <ChevronDown
+            className={cn(
+              'mt-0.5 size-4',
+              onChevron === 'enabled' ? '' : 'hidden',
+              NavbarVariants({ chevron: variant }),
+            )}
+          />
         </div>
       </div>
     )
