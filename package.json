@@ -58,6 +58,7 @@
     "@storybook/react": "^8.3.1",
     "@storybook/react-vite": "^8.3.1",
     "@storybook/test": "^8.3.1",
+    "@types/bun": "latest",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -77,13 +78,15 @@
     "tsup": "^8.2.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.13",
-    "vite-tsconfig-paths": "^4.3.2",
-    "@types/bun": "latest"
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "description": "This is a e-commerce UI library for CustomAFK",
   "bugs": {
     "url": "https://github.com/QuangPhamvt/e-commerce-ui/issues"
   },
   "author": "CustomAFK",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lucide-react": "^0.441.0"
+  }
 }
