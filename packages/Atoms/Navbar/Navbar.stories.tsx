@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react/*'
-import NavbarItem from '.'
+import { NavbarItem } from '.'
 import { Book, ChartBarStacked, Newspaper, Rows2 } from 'lucide-react'
 
 const meta: Meta<typeof NavbarItem> = {
@@ -46,7 +46,7 @@ export const ChevronDisabled: Story = {
   args: {
     icon: <ChartBarStacked />,
     children: 'Danh mục',
-    onChevron: 'disabled',
+    iActive: 'disabled',
   },
 }
 
@@ -55,7 +55,7 @@ export const AnotherExample: Story = {
     icon: <Rows2 />,
     children: 'Series',
     variant: 'active',
-    onChevron: 'disabled',
+    iActive: 'disabled',
   },
 }
 
@@ -64,7 +64,7 @@ export const AnotherExample2: Story = {
     icon: <Book />,
     children: 'Hướng dẫn',
     variant: 'disabled',
-    onChevron: 'disabled',
+    iActive: 'disabled',
   },
 }
 

@@ -11,14 +11,24 @@ interface NavbarItemProps
   icon?: ReactNode
   name?: string
   children?: ReactNode
-  onChevron?: 'disabled' | 'enabled'
+  iActive?: 'disabled' | 'enabled'
 }
 
+interface NavbarProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode
+}
+
+const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children, ...props }, ref) => {
+  return (
+    <div ref={ref} className="flex w-fit gap-2" {...props}>
+      {children}
+    </div>
+  )
+})
+Navbar.displayName = 'Navbar'
+
 const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
-  (
-    { className, state, variant, chevron, children, icon, onChevron = 'enabled', ...props },
-    ref,
-  ) => {
+  ({ className, state, variant, chevron, children, icon, iActive = 'enabled', ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -29,21 +39,15 @@ const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
         )}
         {...props}
       >
-        {icon && <div className="flex size-4 items-center">{icon}</div>}
-        <p className="font-semibold leading-6">{children}</p>
-        <div className="">
-          <ChevronDown
-            className={cn(
-              'mt-0.5 size-4',
-              onChevron === 'enabled' ? '' : 'hidden',
-              NavbarVariants({ chevron: variant }),
-            )}
-          />
-        </div>
+        {icon}
+        <p className="text-ui-p font-semibold">{children}</p>
+        {iActive === 'enabled' && (
+          <ChevronDown className={cn('mt-0.5 size-4', NavbarVariants({ chevron: variant }))} />
+        )}
       </div>
     )
   },
 )
 NavbarItem.displayName = 'NavbarItem'
 
-export default NavbarItem
+export { Navbar, NavbarItem }

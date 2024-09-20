@@ -6,7 +6,7 @@ export const NavbarVariants = cva('', {
       default: '',
       active: 'border-b-2 border-ui-primary-default text-ui-primary-default',
       hover: '',
-      disabled: 'text-ui-text-800 opacity-80',
+      disabled: 'text-ui-text-800 opacity-60',
     },
     chevron: {
       default: 'transition duration-500 group-hover:rotate-180',
