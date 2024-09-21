@@ -1,16 +1,17 @@
 import { cva } from 'class-variance-authority'
 
 export const buttonVariants = cva(
-  'flex items-center justify-center gap-1 rounded-md px-3 py-1 text-base font-semibold text-ui-white-primary enabled:hover:opacity-80 enabled:active:opacity-100 disabled:cursor-not-allowed disabled:opacity-40',
+  'flex items-center justify-center gap-1 rounded-md px-3 py-1 text-base font-semibold text-ui-white-primary transition duration-300 ease-in-out enabled:hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-40',
   {
     variants: {
       variant: {
-        default: 'bg-ui-btn-primary enabled:active:opacity-95 enabled:active:shadow-ui-sd-primary',
+        default:
+          'overflow-clip bg-ui-btn-primary enabled:hover:-translate-y-1 enabled:hover:scale-110 enabled:hover:shadow-ui-sd-primary enabled:active:scale-100 enabled:active:opacity-100 enabled:active:ring-4 enabled:active:ring-[#6C70F0]/20',
         secondary: 'bg-ui-btn-secondary enabled:active:shadow-ui-sd-base',
         outline:
-          'border border-solid border-ui-primary text-ui-primary enabled:active:opacity-80 enabled:active:shadow-ui-sd-primary',
+          'border-ui-primary text-ui-primary border border-solid enabled:active:opacity-80 enabled:active:shadow-ui-sd-primary',
         ghost:
-          'bg-ui-white text-ui-primary enabled:active:opacity-80 enabled:active:shadow-ui-sd-primary',
+          'text-ui-primary bg-ui-white enabled:active:opacity-80 enabled:active:shadow-ui-sd-primary',
         destructive:
           'bg-ui-btn-destructive text-ui-white-primary enabled:active:shadow-ui-sd-destructive',
         'destructive-outline':
