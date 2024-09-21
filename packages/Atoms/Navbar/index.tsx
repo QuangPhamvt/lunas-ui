@@ -1,12 +1,12 @@
 import { cn } from '@/libs'
 import { type VariantProps } from 'class-variance-authority'
-import { ChevronDown } from 'lucide-react'
 import { forwardRef, HTMLAttributes, ReactNode } from 'react'
 import { NavbarVariants } from './navbarVariants'
+import { Lucide2ChevronDownIcon } from '@/Icons'
 
 interface NavbarItemProps
   extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof NavbarVariants> {
+  VariantProps<typeof NavbarVariants> {
   state?: string
   icon?: ReactNode
   name?: string
@@ -42,7 +42,9 @@ const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
         {icon}
         <p className="text-ui-p font-semibold">{children}</p>
         {iActive === 'enabled' && (
-          <ChevronDown className={cn('mt-0.5 size-4', NavbarVariants({ chevron: variant }))} />
+          <Lucide2ChevronDownIcon
+            className={cn('mt-0.5 size-4', NavbarVariants({ chevron: variant }))}
+          />
         )}
       </div>
     )
