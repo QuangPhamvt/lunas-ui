@@ -1,11 +1,14 @@
+
 /** @type {import('tailwindcss/types/config').CustomThemeConfig} */
 export default {
+  spacing: {
+  },
   colors: {
     ui: {
       white: '#F8F8F8',
       'white-primary': '#FDFDFD',
       'black-primary': '#111315',
-      'bg-white': '#F9F9F9',
+      'bg-white': '#FAFAFA',
       primary: {
         default: '#6C70F0',
         50: '#EEF2FF',

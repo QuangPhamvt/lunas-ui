@@ -1,10 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Button } from './Button'
+import Button from '.'
 import { Github } from 'lucide-react'
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Atoms/Button',
   component: Button,
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     variant: {
       description: 'The variant of the button.',

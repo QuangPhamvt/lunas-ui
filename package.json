@@ -14,18 +14,38 @@
   "module": "./dist/Atoms/index.js",
   "types": "./dist/Atoms/index.d.ts",
   "exports": {
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.js"
+    },
+    "./Icons": {
+      "types": "./dist/Icons/index.d.ts",
+      "import": "./dist/Icons/index.js",
+      "require": "./dist/Icons/index.js"
+    },
+    "./Layout": {
+      "types": "./dist/Layout/index.d.ts",
+      "import": "./dist/Layout/index.js",
+      "require": "./dist/Layout/index.js"
+    },
     "./Atoms": {
-      "types":"./dist/Atoms/index.d.ts",
+      "types": "./dist/Atoms/index.d.ts",
       "import": "./dist/Atoms/index.js",
       "require": "./dist/Atoms/index.js"
     },
+    "./Molecules": {
+      "types": "./dist/Molecules/index.d.ts",
+      "import": "./dist/Molecules/index.js",
+      "require": "./dist/Molecules/index.js"
+    },
     "./Organisms": {
-      "types":"./dist/Organisms/index.d.ts",
+      "types": "./dist/Organisms/index.d.ts",
       "import": "./dist/Organisms/index.js",
       "require": "./dist/Organisms/index.js"
     },
     "./tailwindTheme": {
-      "types":"./dist/tailwindTheme.d.ts",
+      "types": "./dist/tailwindTheme.d.ts",
       "import": "./dist/tailwindTheme.js",
       "require": "./dist/tailwindTheme.js"
     }
@@ -38,7 +58,8 @@
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build"
   },
-  "peerDependencies": {
+  "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -58,6 +79,7 @@
     "@storybook/react": "^8.2.7",
     "@storybook/react-vite": "^8.2.7",
     "@storybook/test": "^8.2.7",
+    "@types/bun": "latest",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -74,11 +96,11 @@
     "prettier-plugin-tailwindcss": "^0.6.5",
     "storybook": "^8.2.7",
     "tailwindcss": "^3.4.7",
+    "tailwindcss-animate": "^1.0.7",
     "tsup": "^8.2.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.13",
-    "vite-tsconfig-paths": "^4.3.2",
-    "@types/bun": "latest"
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "description": "This is a e-commerce UI library for CustomAFK",
   "bugs": {
