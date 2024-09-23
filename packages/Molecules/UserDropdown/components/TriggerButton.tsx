@@ -5,27 +5,29 @@ import { Lucide2ChevronDownIcon } from '@/Icons'
 import { cn } from '@/libs'
 
 interface IProps extends IFlexProps {
-  focused: boolean
-  user: {
+  readonly focused: boolean
+  readonly user: {
     username: string
     fullname: string
     email: string
     avatar: string
   }
 }
-const UserAvatarTriggerBtn = forwardRef<HTMLDivElement, IProps>(
-  ({ user, focused, ...props }, ref) => {
+const UserAvatarTriggerButton = memo(
+  forwardRef<HTMLDivElement, IProps>(({ user, focused, ...props }, reference) => {
     return (
       <Flex
         px={2}
         py={1}
         gap={2}
-        ref={ref}
+        ref={reference}
         {...props}
-        className={`${focused ? 'bg-neutral-200' : ''}`}
+        className={String(focused ? 'bg-neutral-200' : '')}
       >
         <UserAvatar size={32} fullname={user.fullname} email={user.email} src={user.avatar} />
+
         <p className="text-ui-p font-semibold text-ui-text-800">{user.username}</p>
+
         <Lucide2ChevronDownIcon
           size={16}
           className={cn(
@@ -35,6 +37,7 @@ const UserAvatarTriggerBtn = forwardRef<HTMLDivElement, IProps>(
         />
       </Flex>
     )
-  },
+  }),
 )
-export default memo(UserAvatarTriggerBtn)
+UserAvatarTriggerButton.displayName = 'UserAvatarTriggerButton'
+export default UserAvatarTriggerButton

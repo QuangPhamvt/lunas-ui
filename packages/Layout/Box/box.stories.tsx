@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react/*'
 import Box from '.'
-import { commonArgTypes } from '../commons'
+import { commonArgumentTypes } from '../commons'
 
 const meta: Meta<typeof Box> = {
   title: 'Layout/Box',
@@ -32,7 +32,7 @@ const meta: Meta<typeof Box> = {
       },
       control: { type: 'text' },
     },
-    ...commonArgTypes,
+    ...commonArgumentTypes,
   },
 }
 export default meta

@@ -4,27 +4,35 @@ import { ButtonHTMLAttributes, forwardRef, memo, ReactNode } from 'react'
 import { buttonVariants } from './buttonVariants'
 import { cn } from '@/libs'
 
-export interface ButtonProps
+interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  readonly asChild?: boolean
   /**
    * Icon to render before the children
    */
-  icon?: ReactNode
+  readonly icon?: ReactNode
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, icon, asChild = false, children, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button'
-    return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
-        {icon}
-        <Slottable>{children}</Slottable>
-      </Comp>
-    )
-  },
+const Button = memo(
+  forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ className, variant, size, icon, asChild = false, children, ...props }, reference) => {
+      const Comp = asChild ? Slot : 'button'
+      return (
+        <Comp
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={reference}
+          {...props}
+        >
+          {icon}
+
+          <Slottable>{children}</Slottable>
+        </Comp>
+      )
+    },
+  ),
 )
 Button.displayName = 'Button'
 
-export default memo(Button)
+export type { ButtonProps }
+export default Button

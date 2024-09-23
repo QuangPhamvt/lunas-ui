@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * BKDR Hash (modified version)
  */

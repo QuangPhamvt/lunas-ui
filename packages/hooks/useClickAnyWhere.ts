@@ -6,7 +6,7 @@ import useEventListener from './useEventListener'
  */
 const useClickAnyWhere = (handler: (event: MouseEvent) => void) => {
   useEventListener('click', (event) => {
-    handler(event as any)
+    handler(event as MouseEvent)
   })
 }
 export default useClickAnyWhere

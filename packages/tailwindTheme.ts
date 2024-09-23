@@ -1,8 +1,5 @@
-
-/** @type {import('tailwindcss/types/config').CustomThemeConfig} */
-export default {
-  spacing: {
-  },
+const themes = {
+  spacing: {},
   colors: {
     ui: {
       white: '#F8F8F8',
@@ -149,3 +146,4 @@ export default {
     'ui-small-note': ['0.75rem', '1rem'],
   },
 }
+export default themes

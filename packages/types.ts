@@ -1,7 +1,7 @@
-import { SVGAttributes } from "react";
+import { SVGAttributes } from 'react'
 
 export interface IIconProps extends SVGAttributes<SVGElement> {
-  color?: string;
-  size?: number | string;
-  bgColor?: string;
+  color?: string
+  size?: number | string
+  bgColor?: string
 }

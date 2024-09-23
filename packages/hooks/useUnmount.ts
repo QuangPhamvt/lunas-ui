@@ -4,13 +4,13 @@ import React from 'react'
  * Custom hook that runs a cleanup function when the component is unmounted
  * @param func
  */
-const useUnmount = (func: () => void) => {
-  const funcRef = React.useRef<() => void>(func)
-  funcRef.current = func
+const useUnmount = (callback: () => void) => {
+  const functionReference = React.useRef<() => void>(callback)
+  functionReference.current = callback
 
   React.useEffect(
     () => () => {
-      funcRef.current()
+      functionReference.current()
     },
     [],
   )
