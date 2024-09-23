@@ -1,7 +1,8 @@
+/* eslint-disable no-magic-numbers, max-lines, id-length */
 import { cva } from 'class-variance-authority'
 import { InputType } from 'storybook/internal/types'
 
-export const commonArgTypes: Record<string, InputType | undefined> = {
+export const commonArgumentTypes: Record<string, InputType | undefined> = {
   p: {
     description: 'Set the padding for the component',
     table: {

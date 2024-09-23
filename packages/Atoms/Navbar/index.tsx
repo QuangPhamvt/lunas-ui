@@ -1,26 +1,26 @@
 import { cn } from '@/libs'
 import { type VariantProps } from 'class-variance-authority'
 import { forwardRef, HTMLAttributes, ReactNode } from 'react'
-import { NavbarVariants } from './navbarVariants'
+import { navbarVariants } from './navbarVariants'
 import { Lucide2ChevronDownIcon } from '@/Icons'
 
 interface NavbarItemProps
   extends HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof NavbarVariants> {
-  state?: string
-  icon?: ReactNode
-  name?: string
-  children?: ReactNode
-  iActive?: 'disabled' | 'enabled'
+    VariantProps<typeof navbarVariants> {
+  readonly state?: string
+  readonly icon?: ReactNode
+  readonly name?: string
+  readonly children?: ReactNode
+  readonly iActive?: 'disabled' | 'enabled'
 }
 
 interface NavbarProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactNode
+  readonly children: ReactNode
 }
 
-const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children, ...props }, ref) => {
+const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children, ...props }, reference) => {
   return (
-    <div ref={ref} className="flex w-fit gap-2" {...props}>
+    <div ref={reference} className="flex w-fit gap-2" {...props}>
       {children}
     </div>
   )
@@ -28,22 +28,27 @@ const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children, ...props }, 
 Navbar.displayName = 'Navbar'
 
 const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
-  ({ className, state, variant, chevron, children, icon, iActive = 'enabled', ...props }, ref) => {
+  (
+    { className, variant, children, icon, iActive: indexActive = 'enabled', ...props },
+    reference,
+  ) => {
     return (
       <div
-        ref={ref}
+        ref={reference}
         className={cn(
           'group flex w-fit select-none items-center gap-1 px-2 py-1',
+          navbarVariants({ variant }),
           className,
-          NavbarVariants({ variant }),
         )}
         {...props}
       >
         {icon}
+
         <p className="text-ui-p font-semibold">{children}</p>
-        {iActive === 'enabled' && (
+
+        {indexActive === 'enabled' && (
           <Lucide2ChevronDownIcon
-            className={cn('mt-0.5 size-4', NavbarVariants({ chevron: variant }))}
+            className={cn('mt-0.5 size-4', navbarVariants({ chevron: variant }))}
           />
         )}
       </div>

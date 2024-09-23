@@ -1,43 +1,54 @@
-import * as React from 'react'
+import React from 'react'
 
 import { cn } from '@/libs'
 
 const Input = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('flex flex-col gap-2 font-semibold w-80', className)} {...props} />
+  ({ className, ...props }, reference) => (
+    <div
+      ref={reference}
+      className={cn('flex w-80 flex-col gap-2 font-semibold', className)}
+      {...props}
+    />
   ),
 )
 Input.displayName = 'Input'
 
 const InputTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => (
+  ({ className, children, ...props }, reference) => (
     <h3
-      ref={ref}
+      ref={reference}
       className={cn('text-lg font-semibold leading-none tracking-tight', className)}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   ),
 )
 InputTitle.displayName = 'InputTitle'
 
 const InputField = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => (
+  ({ className, ...props }, reference) => (
     <div
-      ref={ref}
-      className={cn('h-8 flex px-2.5 py-0.5 items-center border opacity-60 bg-white rounded-lg', className)}
+      ref={reference}
+      className={cn(
+        'flex h-8 items-center rounded-lg border bg-white px-2.5 py-0.5 opacity-60',
+        className,
+      )}
       {...props}
     >
-      <input placeholder='Lorem claim lorem ipsum' className='outline-none text-sm font-normal w-full'/>
+      <input
+        placeholder="Lorem claim lorem ipsum"
+        className="w-full text-sm font-normal outline-none"
+      />
     </div>
   ),
 )
 InputField.displayName = 'InputField'
-
-export { Input, InputTitle, InputField }
 
 const INPUT = {
   Root: Input,
   Title: InputTitle,
 }
 
+export { Input, InputTitle, InputField }
 export default INPUT

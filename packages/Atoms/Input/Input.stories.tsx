@@ -16,7 +16,8 @@ export const ButtonDefault: Story = {
     children: (
       <Input>
         <InputTitle>Label Input</InputTitle>
-        <InputField></InputField>
+
+        <InputField />
       </Input>
     ),
   },

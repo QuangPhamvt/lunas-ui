@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react/*'
 import Flex from '.'
 import { Fragment } from 'react/jsx-runtime'
-import { commonArgTypes } from '../commons'
+import { commonArgumentTypes } from '../commons'
 
 const meta: Meta<typeof Flex> = {
   title: 'Layout/Flex',
@@ -58,7 +58,7 @@ const meta: Meta<typeof Flex> = {
       },
       control: { type: 'text' },
     },
-    ...commonArgTypes,
+    ...commonArgumentTypes,
     children: { control: false },
   },
 }
@@ -70,9 +70,11 @@ export const FlexDefault: Story = {
     className: 'w-96 h-32 border border-ui-primary',
     children: (
       <Fragment>
-        <div className="size-16 rounded-md bg-ui-primary-300 shadow-md"></div>
-        <div className="size-16 rounded-md bg-ui-primary-300 shadow-md"></div>
-        <div className="size-16 rounded-md bg-ui-primary-300 shadow-md"></div>
+        <div className="size-16 rounded-md bg-ui-primary-300 shadow-md" />
+
+        <div className="size-16 rounded-md bg-ui-primary-300 shadow-md" />
+
+        <div className="size-16 rounded-md bg-ui-primary-300 shadow-md" />
       </Fragment>
     ),
   },

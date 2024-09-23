@@ -1,3 +1,4 @@
+/* eslint-disable import/max-dependencies */
 export { default as AvatarIcon } from './AvatarIcon'
 export { default as LocalHeartIcon } from './LocalHeartIcon'
 export { default as LocalListIcon } from './LocalListIcon'

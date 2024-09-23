@@ -1,20 +1,20 @@
 import { IIconProps } from '@/types'
+import { DEFALUT_ICON_SIZE } from '@/utils/contants'
 
-const LocalLockIcon = (props: IIconProps) => {
-  const { color, size } = props
+const LocalLockIcon = ({ color, size }: IIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size ?? 24}
-      height={size ?? 24}
+      width={size ?? DEFALUT_ICON_SIZE}
+      height={size ?? DEFALUT_ICON_SIZE}
       viewBox="0 0 16 16"
       fill="none"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M12 4.6665V6.6665H12.6667C13.7713 6.6665 14.6667 7.56193 14.6667 8.6665V13.3332C14.6667 14.4377 13.7713 15.3332 12.6667 15.3332H3.33337C2.2288 15.3332 1.33337 14.4377 1.33337 13.3332V8.6665C1.33337 7.56193 2.2288 6.6665 3.33337 6.6665H4.00004V4.6665C4.00004 3.60564 4.42147 2.58822 5.17161 1.83808C5.92176 1.08793 6.93917 0.666504 8.00004 0.666504C9.06091 0.666504 10.0783 1.08793 10.8285 1.83808C11.5786 2.58822 12 3.60564 12 4.6665ZM6.11442 2.78089C6.61452 2.28079 7.2928 1.99984 8.00004 1.99984C8.70728 1.99984 9.38556 2.28079 9.88566 2.78089C10.3858 3.28098 10.6667 3.95926 10.6667 4.6665V6.6665H5.33337V4.6665C5.33337 3.95926 5.61433 3.28098 6.11442 2.78089ZM3.32287 7.99992C3.32637 7.99986 3.32987 7.99984 3.33337 7.99984H12.6667C12.6702 7.99984 12.6737 7.99986 12.6772 7.99992H3.32287Z"
-        fill={color ?? "#434349"}
+        fill={color ?? '#434349'}
       />
     </svg>
   )

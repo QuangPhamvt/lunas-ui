@@ -9,7 +9,7 @@ type TUseBoolean = {
 }
 const useBoolean = (initialValue = false): TUseBoolean => {
   if (typeof initialValue !== 'boolean') {
-    throw new Error('initialValue must `true` or `false`')
+    throw new TypeError('initialValue must `true` or `false`')
   }
   const [value, setValue] = React.useState<boolean>(initialValue)
 
@@ -17,7 +17,7 @@ const useBoolean = (initialValue = false): TUseBoolean => {
 
   const setFalse = useCallback(() => setValue(false), [])
 
-  const toggle = useCallback(() => setValue((prev) => !prev), [])
+  const toggle = useCallback(() => setValue((previous) => !previous), [])
 
   return { value, setValue, setTrue, setFalse, toggle }
 }

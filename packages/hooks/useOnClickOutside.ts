@@ -4,16 +4,17 @@ import useEventListener from './useEventListener'
 type TEventType = 'mousedown' | 'mouseup' | 'touchstart' | 'touchend' | 'focusin' | 'focusout'
 
 /**
-  * Hook that handles click outside a specified element
-  * @param ref - React ref object(s) representing the element(s) to watch for clicks outside
-  * @param handler - The callback function to be executed when a click outside the element occurs
-  * @param eventType - The mouse event type to listen for (optional, defaults to 'mousedown')
-  * @param eventListenerOptions - The options object to be passed to the `addEventListener` method (optional)
-  */
+ * Hook that handles click outside a specified element
+ * @param ref - React ref object(s) representing the element(s) to watch for clicks outside
+ * @param handler - The callback function to be executed when a click outside the element occurs
+ * @param eventType - The mouse event type to listen for (optional, defaults to 'mousedown')
+ * @param eventListenerOptions - The options object to be passed to the `addEventListener` method (optional)
+ */
 const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
-  ref: React.RefObject<T> | React.RefObject<T>[],
+  reference: React.RefObject<T> | React.RefObject<T>[],
   handler: (event: MouseEvent | TouchEvent | FocusEvent | Event) => void,
   eventType: TEventType = 'mousedown',
+  // eslint-disable-next-line no-undef
   eventListenerOptions: AddEventListenerOptions = {},
 ) => {
   useEventListener(
@@ -24,11 +25,18 @@ const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
       // Do nothing if the target is not connected element with document
       if (!target || !target.isConnected) return
 
-      const isOutside = Array.isArray(ref)
-        ? ref.filter((r) => r.current).every((r) => r.current && !r.current?.contains(target))
-        : ref.current && !ref.current.contains(target)
+      const isOutside = Array.isArray(reference)
+        ? reference
+            .filter((referenceElement) => referenceElement.current)
+            .every(
+              (referenceElement) =>
+                referenceElement.current && !referenceElement.current?.contains(target),
+            )
+        : reference.current && !reference.current.contains(target)
 
-      isOutside && handler(event)
+      if (isOutside) {
+        handler(event)
+      }
     },
     undefined,
     eventListenerOptions,

@@ -1,11 +1,4 @@
-// import ColorHash from 'color-hash';
-// export const colorHash = new ColorHash({
-//   hue: { min: 0, max: 359 },
-//   saturation: [0.35, 0.5, 0.65],
-//   lightness: [0.35, 0.5, 0.65],
-//   hash: 'bkdr'
-// });
-
+/* eslint-disable */
 import BKDRHash from './cores/bkdr-hash'
 import { HSL2RGB, RGB2HEX } from './cores/colors'
 

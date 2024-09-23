@@ -18,7 +18,9 @@ export const ButtonDefault: Story = {
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
         </CardHeader>
+
         <CardContent>Card Content</CardContent>
+
         <CardFooter>Card Footer</CardFooter>
       </>
     ),

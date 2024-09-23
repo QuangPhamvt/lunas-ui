@@ -1,15 +1,16 @@
 import React from 'react'
 
-type TCopiedValue = string | null
-type TCopyFn = (text: string) => Promise<void>
+type TCopiedValue = string | undefined
+type TCopyFunction = (text: string) => Promise<void>
 /**
  * @description Custom hook to copy text to clipboard using the Clipboard API
  * @returns {void}
  */
-const useCopyToClipboard = (): [TCopiedValue, TCopyFn] => {
-  const [copiedValue, setCopiedValue] = React.useState<TCopiedValue>(null)
-  const copy: TCopyFn = React.useCallback(async (text) => {
+const useCopyToClipboard = (): [TCopiedValue, TCopyFunction] => {
+  const [copiedValue, setCopiedValue] = React.useState<TCopiedValue>()
+  const copy: TCopyFunction = React.useCallback(async (text) => {
     if (!navigator.clipboard) {
+      // eslint-disable-next-line no-console
       console.warn('Clipboard API not found')
       return
     }
@@ -17,9 +18,8 @@ const useCopyToClipboard = (): [TCopiedValue, TCopyFn] => {
     try {
       await navigator.clipboard.writeText(text)
       setCopiedValue(text)
-    } catch (err) {
-      console.error('Failed to copy:', err)
-      setCopiedValue(null)
+    } catch {
+      setCopiedValue(undefined)
     }
   }, [])
   return [copiedValue, copy]

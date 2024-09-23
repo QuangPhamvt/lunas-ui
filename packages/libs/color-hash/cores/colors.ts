@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Convert HEX color to RGB color
  * @param hex
