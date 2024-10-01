@@ -1,4 +1,4 @@
-/* eslint-disable no-magic-numbers, no-shadow, max-lines, id-length, max-statements */
+/* eslint-disable max-lines */
 import { forwardRef, HTMLAttributes, memo, useMemo } from 'react'
 import { cn } from '@/libs'
 import flexVariants from './flexVariant'

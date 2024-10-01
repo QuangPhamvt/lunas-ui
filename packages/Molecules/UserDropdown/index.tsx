@@ -3,6 +3,7 @@ import { UserAvartarTriggerButton } from './components'
 import { memo, useCallback } from 'react'
 import { useBoolean } from '@/hooks'
 import { LocalHeartIcon, LocalListIcon, LocalUserIcon, Lucide2LogOutIcon } from '@/Icons'
+import { TUserSettingSelect } from '@/types'
 
 interface IProps {
   readonly user: {
@@ -12,15 +13,15 @@ interface IProps {
     email: string
     avatar: string
   }
-  readonly onEmitSelect?: (value: string) => void
+  readonly onSelected?: (value: TUserSettingSelect) => void
 }
-const UserDropdown = memo(({ onEmitSelect = () => undefined, user }: IProps) => {
+const UserDropdown = memo(({ onSelected = () => undefined, user }: IProps) => {
   const { value: isOpen, toggle: handleToggle } = useBoolean(false)
   const handleSelect = useCallback(
-    (value: string) => {
-      onEmitSelect(value)
+    (value: TUserSettingSelect) => {
+      onSelected(value)
     },
-    [onEmitSelect],
+    [onSelected],
   )
   return (
     <DropdownMenu open={isOpen} onOpenChange={handleToggle}>

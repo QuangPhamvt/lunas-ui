@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers, no-shadow, id-length, max-statements */
 import { cn } from '@/libs'
 import { forwardRef, HTMLAttributes, memo, useMemo } from 'react'
 import boxVariant from './box.variant'
