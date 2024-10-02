@@ -100,17 +100,9 @@ const FormControl = React.forwardRef<
   React.ElementRef<typeof Slot>,
   React.ComponentPropsWithoutRef<typeof Slot>
 >(({ ...props }, reference) => {
-  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  const { formItemId } = useFormField()
 
-  return (
-    <Slot
-      ref={reference}
-      id={formItemId}
-      aria-describedby={Boolean(error) && `${formDescriptionId} ${formMessageId}`}
-      aria-invalid={Boolean(error)}
-      {...props}
-    />
-  )
+  return <Slot ref={reference} id={formItemId} {...props} />
 })
 FormControl.displayName = 'FormControl'
 
@@ -139,7 +131,7 @@ const FormMessage = React.forwardRef<
   const body = error ? String(error?.message) : children
 
   if (!body) {
-    return null
+    return undefined
   }
 
   return (
