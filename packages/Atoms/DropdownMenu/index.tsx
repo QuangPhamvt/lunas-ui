@@ -1,5 +1,5 @@
 import React from 'react'
-import DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { cn } from '@/libs'
 import { Check, Circle } from 'lucide-react'
 
@@ -30,7 +30,7 @@ const DropdownMenuTrigger = React.forwardRef<
     {children}
   </DropdownMenuPrimitive.Trigger>
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName
 
 const DropdownMenuSubTrigger = React.forwardRef<
@@ -53,7 +53,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {children}
   </DropdownMenuPrimitive.SubTrigger>
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName
 
 const DropdownMenuSubContent = React.forwardRef<
@@ -79,7 +79,7 @@ const DropdownMenuSubContent = React.forwardRef<
     {...props}
   />
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName
 
 const DropdownMenuContent = React.forwardRef<
@@ -91,7 +91,7 @@ const DropdownMenuContent = React.forwardRef<
       ref={reference}
       sideOffset={sideOffset}
       className={cn(
-        'z-50 min-w-32 overflow-hidden rounded-xl bg-ui-bg-white py-2 shadow-ui-soft duration-300',
+        'z-50 min-w-32 overflow-hidden rounded-xl bg-ui-bg-white py-2 shadow-ui-muli duration-300',
         'data-[state=open]:animate-in',
         'data-[state=open]:fade-in-0',
         'data-[state=open]:zoom-in-95',
@@ -108,7 +108,7 @@ const DropdownMenuContent = React.forwardRef<
     />
   </DropdownMenuPrimitive.Portal>
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
 const DropdownMenuItem = React.forwardRef<
@@ -120,7 +120,7 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={reference}
     className={cn(
-      'hover:cursor-pointer hover:bg-neutral-100 hover:text-ui-text-900',
+      'hover:cursor-pointer hover:bg-neutral-200 hover:text-ui-text-900',
       'relative flex cursor-default select-none items-center gap-x-2 bg-ui-bg-white px-3 py-2 text-ui-p text-ui-text-700 outline-none',
       'transition-colors duration-200',
       'data-[disabled]:opacity-50',
@@ -131,7 +131,7 @@ const DropdownMenuItem = React.forwardRef<
     {...props}
   />
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
 const DropdownMenuCheckboxItem = React.forwardRef<
@@ -158,7 +158,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName
 
 const DropdownMenuRadioItem = React.forwardRef<
@@ -184,7 +184,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     {children}
   </DropdownMenuPrimitive.RadioItem>
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
 
 const DropdownMenuLabel = React.forwardRef<
@@ -199,7 +199,7 @@ const DropdownMenuLabel = React.forwardRef<
     {...props}
   />
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 
 const DropdownMenuSeparator = React.forwardRef<
@@ -212,7 +212,7 @@ const DropdownMenuSeparator = React.forwardRef<
     {...props}
   />
 ))
-// eslint-disable-next-line prefer-destructuring, unicorn/consistent-destructuring
+// eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 
 const DropdownMenuShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {

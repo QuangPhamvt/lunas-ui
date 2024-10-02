@@ -8,3 +8,4 @@ export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffec
 export { default as useOnClickOutside } from './useOnClickOutside'
 export { default as useTimeout } from './useTimeout'
 export { default as useUnmount } from './useUnmount'
+export * from './useToast'

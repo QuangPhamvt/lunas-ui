@@ -1,5 +1,8 @@
 const themes = {
-  spacing: {},
+  spacing: {
+    30: '7.5rem', // 120px
+    33: '8.25rem', // 132px
+  },
   colors: {
     ui: {
       white: '#F8F8F8',
@@ -120,7 +123,7 @@ const themes = {
     'ui-bg-page':
       'radial-gradient(70.47% 70.47% at 50% 50%, #FDFDFD 0%, #F3F1FF 50%, #F1FCFF 100%)',
     'ui-btn-primary': 'linear-gradient(180deg, #9EA1FF 0%, #607DE8 100%)',
-    'ui-btn-secondary': 'linear-gradient(180deg, #5E7FF1 0%, #8FDDFF 100%)',
+    'ui-btn-secondary': 'linear-gradient(180deg, #4277EF 0%, #669BF4 100%)',
     'ui-btn-accept': 'linear-gradient(282deg, #30C36D 6.81%, #6BCD8A 93.19%)',
     'ui-btn-destructive': 'linear-gradient(282deg, #FF384A 7.07%, #FF5463 92.93%)',
     'ui-status-bg-positive': 'linear-gradient(0deg, #C4FFD8 0%, #68FF9D 100%)',

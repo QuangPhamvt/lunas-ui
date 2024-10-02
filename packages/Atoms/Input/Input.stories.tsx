@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Input, InputTitle, InputField } from '.'
+import Input from '.'
+import { Lucide2UserIcon } from '@/Icons'
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Atoms/Input',
@@ -11,20 +12,25 @@ const meta: Meta<typeof Input> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const ButtonDefault: Story = {
+export const Default: Story = {
   args: {
-    children: (
-      <Input>
-        <InputTitle>Label Input</InputTitle>
-
-        <InputField />
-      </Input>
-    ),
+    placeholder: 'Placeholder',
+    children: 'Input',
   },
 }
 
-export const Default: Story = {
+export const WithIcon: Story = {
   args: {
+    placeholder: 'Placeholder',
     children: 'Input',
+    icon: <Lucide2UserIcon size={16} />,
+  },
+}
+
+export const Error: Story = {
+  args: {
+    placeholder: 'Placeholder',
+    children: 'Input',
+    isErrored: true,
   },
 }

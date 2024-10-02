@@ -10,10 +10,10 @@ interface IProps extends React.HTMLAttributes<HTMLElement> {
   readonly size?: number
 }
 const UserAvatar = memo(
-  React.forwardRef<HTMLElement, IProps>(({ fullname, email, src: source, size }) => {
+  React.forwardRef<HTMLDivElement, IProps>(({ fullname, email, src: source, size }, reference) => {
     const bgColor = useMemo(() => colorHash.hex(fullname + email), [fullname, email])
     return (
-      <div className="flex size-fit items-center justify-center rounded-full">
+      <div ref={reference} className="flex size-fit items-center justify-center rounded-full">
         {source ? (
           <img
             className={cn('rounded-full object-fill', {

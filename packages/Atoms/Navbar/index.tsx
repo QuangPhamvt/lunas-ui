@@ -1,60 +1,61 @@
 import { cn } from '@/libs'
-import { type VariantProps } from 'class-variance-authority'
-import { forwardRef, HTMLAttributes, ReactNode } from 'react'
-import { navbarVariants } from './navbarVariants'
+import { forwardRef, HTMLAttributes, memo, ReactNode } from 'react'
 import { Lucide2ChevronDownIcon } from '@/Icons'
 
-interface NavbarItemProps
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof navbarVariants> {
+interface NavbarItemProps extends HTMLAttributes<HTMLDivElement> {
   readonly state?: string
   readonly icon?: ReactNode
   readonly name?: string
   readonly children?: ReactNode
-  readonly iActive?: 'disabled' | 'enabled'
+  readonly isActive?: boolean
+  readonly enableLeftIcon?: boolean
 }
 
-interface NavbarProps extends HTMLAttributes<HTMLDivElement> {
-  readonly children: ReactNode
-}
+const NavbarItem = memo(
+  forwardRef<HTMLDivElement, NavbarItemProps>(
+    (
+      { enableLeftIcon = false, isActive = false, icon, className, children, ...props },
+      reference,
+    ) => {
+      return (
+        <div
+          ref={reference}
+          className={cn(
+            ['group'],
+            [
+              'relative flex h-fit w-fit items-center gap-1 overflow-x-hidden overflow-y-hidden px-2 pb-3 pt-3',
+            ],
+            ['select-none text-ui-p font-medium'],
+            ['hover:cursor-pointer'],
+            ['transition-colors duration-150 ease-in-out'],
+            [
+              'before:absolute before:inset-x-0 before:top-11 before:z-10 before:h-1 before:-translate-x-full before:bg-ui-primary-default before:transition-all before:duration-300 before:ease-in-out before:content-[""] before:hover:translate-x-0',
+            ],
+            {
+              'text-ui-primary-default': isActive,
+            },
+            className,
+          )}
+          {...props}
+        >
+          {icon}
 
-const Navbar = forwardRef<HTMLDivElement, NavbarProps>(({ children, ...props }, reference) => {
-  return (
-    <div ref={reference} className="flex w-fit gap-2" {...props}>
-      {children}
-    </div>
-  )
-})
-Navbar.displayName = 'Navbar'
+          <p>{children}</p>
 
-const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
-  (
-    { className, variant, children, icon, iActive: indexActive = 'enabled', ...props },
-    reference,
-  ) => {
-    return (
-      <div
-        ref={reference}
-        className={cn(
-          'group flex w-fit select-none items-center gap-1 px-2 py-1',
-          navbarVariants({ variant }),
-          className,
-        )}
-        {...props}
-      >
-        {icon}
-
-        <p className="text-ui-p font-semibold">{children}</p>
-
-        {indexActive === 'enabled' && (
-          <Lucide2ChevronDownIcon
-            className={cn('mt-0.5 size-4', navbarVariants({ chevron: variant }))}
-          />
-        )}
-      </div>
-    )
-  },
+          {Boolean(enableLeftIcon) && (
+            <Lucide2ChevronDownIcon
+              className={cn(
+                ['mt-0.5 size-4'],
+                ['transition duration-300 ease-in-out'],
+                ['group-hover:rotate-180'],
+              )}
+              color={isActive ? 'currentColor' : '#434349'}
+            />
+          )}
+        </div>
+      )
+    },
+  ),
 )
 NavbarItem.displayName = 'NavbarItem'
-
-export { Navbar, NavbarItem }
+export default NavbarItem

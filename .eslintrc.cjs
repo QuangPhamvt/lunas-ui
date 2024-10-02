@@ -100,11 +100,9 @@ module.exports = {
     'dot-notation': 'error',
     eqeqeq: 'error',
     'guard-for-in': 'error',
-    'id-length': 'error',
     'max-depth': 'error',
     'max-nested-callbacks': 'error',
     'max-params': ['error', 4],
-    'max-statements': 'error',
     'new-cap': 'error',
     'object-shorthand': 'error',
     'operator-assignment': 'error',
@@ -126,7 +124,6 @@ module.exports = {
     'no-unsafe-finally': 'error',
     'no-useless-computed-key': ['error', { enforceForClassMembers: true }],
     'no-useless-rename': 'error',
-    'max-lines': 'error',
     'no-template-curly-in-string': 'error',
     'symbol-description': 'error',
     'prefer-numeric-literals': 'error',
@@ -168,15 +165,6 @@ module.exports = {
     'no-constant-binary-expression': 'error',
     'no-empty-static-block': 'error',
 
-    'no-magic-numbers': [
-      'error',
-      {
-        ignore: [0, 1],
-        enforceConst: true,
-        ignoreDefaultValues: true,
-        ignoreClassFieldInitialValues: true,
-      },
-    ],
     complexity: ['error', { max: 10 }],
     'func-names': ['error', 'as-needed'],
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
@@ -187,13 +175,6 @@ module.exports = {
     'valid-typeof': ['error', { requireStringLiterals: true }],
     'no-return-assign': ['error', 'always'],
     'no-self-assign': ['error', { props: true }],
-    'no-shadow': [
-      'error',
-      {
-        builtinGlobals: true,
-        allow: ['defaultStatus', 'event', 'find', 'length', 'name', 'status'],
-      },
-    ],
     'no-undef': ['error', { typeof: true }],
     'no-underscore-dangle': [
       'error',
@@ -237,11 +218,6 @@ module.exports = {
     'no-implicit-coercion': ['error', { disallowTemplateShorthand: true }],
     'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
     'logical-assignment-operators': ['error', 'always', { enforceForIfStatements: true }],
-    'prefer-destructuring': [
-      'error',
-      { array: true, object: true },
-      { enforceForRenamedProperties: true },
-    ],
 
     'no-restricted-globals': [
       'error',
@@ -318,9 +294,6 @@ module.exports = {
     'import/unambiguous': 'error',
     'import/no-amd': 'error',
     'import/first': 'error',
-    'import/exports-last': 'error',
-    'import/no-namespace': 'error',
-    'import/max-dependencies': 'error',
     'import/no-named-default': 'error',
     'import/no-commonjs': 'error',
     'import/no-relative-packages': 'error',
@@ -330,7 +303,6 @@ module.exports = {
     'import/no-useless-path-segments': ['error', { commonjs: true }],
     'import/no-unused-modules': ['error', { missingExports: false, unusedExports: true }],
     'import/no-dynamic-require': ['error', { esmodule: true }],
-    'import/named': ['error', { commonjs: true }],
     'import/no-anonymous-default-export': ['error', { allowCallExpression: false }],
     'import/newline-after-import': ['error', { considerComments: true }],
     'import/no-duplicates': ['error', { considerQueryString: true, 'prefer-inline': true }],
@@ -568,6 +540,10 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'react/jsx-no-constructed-context-values': 'off',
     'react/no-object-type-as-default-prop': 'off',
+
+    //jsx-a11y
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
   settings: {
     react: {
