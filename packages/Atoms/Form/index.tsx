@@ -6,14 +6,12 @@ import {
   ControllerProps,
   FieldPath,
   FieldValues,
-  FormProvider,
+  FormProvider as Form,
   useFormContext,
 } from 'react-hook-form'
 
 import { Label } from '@/Atoms/Label'
 import { cn } from '@/libs'
-
-const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,

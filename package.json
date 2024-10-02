@@ -1,7 +1,7 @@
 {
   "name": "@customafk/lunas-ui",
   "private": false,
-  "version": "0.0.0-l",
+  "version": "0.0.0-n",
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
@@ -58,21 +58,6 @@
     "fmt:fix": "prettier --write \"./packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build"
-  },
-  "peerDependencies": {
-    "@hookform/resolvers": "^3.9.0",
-    "@radix-ui/react-dropdown-menu": "^2.1.1",
-    "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-toast": "^1.2.1",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.424.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.0",
-    "tailwind-merge": "^2.4.0",
-    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
