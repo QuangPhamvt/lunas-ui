@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import { forwardRef, HTMLAttributes, memo, useMemo } from 'react'
 import { cn } from '@/libs'
 import flexVariants from './flexVariant'

@@ -12,13 +12,27 @@ type Story = StoryObj<typeof AuthForm>
 export const LogIn: Story = {
   args: {
     title: 'Đăng nhập',
-    onSignIn: () => console.log('Sign in'),
+    isLoading: false,
+    initialTitle: 'SIGN_IN',
+    onSignIn(parameters) {
+      console.log('Sign in', parameters)
+    },
+    onSignUp(parameters) {
+      console.log('Sign up', parameters)
+    },
   },
 }
 
 export const Register: Story = {
   args: {
     title: 'Đăng ký',
-    initialTitle: 'REGISTER'
+    isLoading: false,
+    initialTitle: 'SIGN_OUT',
+    onSignIn(parameters) {
+      console.log('Sign in', parameters)
+    },
+    onSignUp(parameters) {
+      console.log('Sign up', parameters)
+    },
   },
 }

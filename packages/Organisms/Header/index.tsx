@@ -1,4 +1,4 @@
-import { Button, Badge } from '@/Atoms'
+import { Badge, Button } from '@/Atoms'
 import NavbarItem from '@/Atoms/Navbar'
 import {
   DefaultLogo,
@@ -12,30 +12,31 @@ import { Flex } from '@/Layout'
 import { cn } from '@/libs'
 import { UserDropdown } from '@/Molecules'
 import { TUser, TUserSettingSelect } from '@/types'
-import { forwardRef, HTMLAttributes, memo, useCallback, useMemo, useState } from 'react'
+import { forwardRef, Fragment, HTMLAttributes, memo, useCallback, useMemo, useState } from 'react'
 
 export type THeaderNav = 'CATEGORY' | 'SERIES' | 'GUIDE' | 'NEWS' | null
-
 export interface IHeaderProps extends HTMLAttributes<HTMLHeadElement> {
-  user?: TUser | null
+  user?: TUser
+  onSignIn?: () => void
+  onSignUp?: () => void
   onNavSelected?: (nav: THeaderNav) => void
   onSettingSelected?: (value: TUserSettingSelect) => void
 }
 const Header = memo(
   forwardRef<HTMLHeadElement, IHeaderProps>((props, reference) => {
-    const { user = null, children, className, onNavSelected, onSettingSelected, ...rest } = props
-    const [activedNav, setActivedNav] = useState<THeaderNav>(null)
+    const { user, className, onSignIn, onSignUp, onNavSelected, onSettingSelected, ...rest } = props
+    const [activeNav, setActiveNav] = useState<THeaderNav>()
 
-    const isNavSelected = useMemo(() => (nav: THeaderNav) => activedNav === nav, [activedNav])
+    const isNavSelected = useMemo(() => (nav: THeaderNav) => activeNav === nav, [activeNav])
 
     const handleNavSelected = useCallback(
       (nav: THeaderNav) => {
-        setActivedNav(nav)
-        if (onNavSelected && activedNav !== nav) {
+        setActiveNav(nav)
+        if (onNavSelected && activeNav !== nav) {
           onNavSelected(nav)
         }
       },
-      [activedNav, onNavSelected],
+      [activeNav, onNavSelected],
     )
 
     const handleSettingSelected = useCallback(
@@ -95,14 +96,26 @@ const Header = memo(
             Tin tức
           </NavbarItem>
         </Flex>
-        <Flex flexGrow={0} className="overflow-hidden" pr={4} gap={4}>
-          {Boolean(user) && (
-            <>
+        <Flex flexGrow={0} className="overflow-visible" pr={4} gap={4} py={0}>
+          {user ? (
+            <Fragment>
               <UserDropdown user={user} onSelected={handleSettingSelected} />
               <Badge>
                 <LocalCartIcon color="#6C70F0" size={16} />
               </Badge>
-            </>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Button variant="outline" className="border-none px-6 py-2" onClick={onSignIn}>
+                <span className="text-ui-p font-semibold text-ui-primary-500">Đăng nhập</span>
+              </Button>
+              <Button variant="default" className="border-none px-6 py-2" onClick={onSignUp}>
+                <span>Đăng ký</span>
+              </Button>
+              <Badge>
+                <LocalCartIcon color="#6C70F0" size={16} />
+              </Badge>
+            </Fragment>
           )}
         </Flex>
       </header>

@@ -16,7 +16,11 @@ const DestructiveFC = () => {
   const { toast } = useToast()
   return (
     <>
-      <Button onClick={() => toast({ title: 'Hello', description: 'World', variant: 'destructive' })}>Show Toast</Button>
+      <Button
+        onClick={() => toast({ title: 'Hello', description: 'World', variant: 'destructive' })}
+      >
+        Show Toast
+      </Button>
       <Toaster />
     </>
   )

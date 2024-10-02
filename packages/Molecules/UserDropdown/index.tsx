@@ -29,7 +29,7 @@ const UserDropdown = memo(({ onSelected = () => undefined, user }: IProps) => {
         <UserAvartarTriggerButton user={user} focused={isOpen} />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="size-fit">
+      <DropdownMenuContent className="top-44 size-fit text-ui-note font-medium">
         <DropdownMenuItem
           className="h-10 w-full justify-start gap-2 border-t"
           onSelect={() => handleSelect('FAVORITE')}

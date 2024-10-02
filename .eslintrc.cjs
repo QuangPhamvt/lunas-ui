@@ -124,7 +124,6 @@ module.exports = {
     'no-unsafe-finally': 'error',
     'no-useless-computed-key': ['error', { enforceForClassMembers: true }],
     'no-useless-rename': 'error',
-    'max-lines': 'error',
     'no-template-curly-in-string': 'error',
     'symbol-description': 'error',
     'prefer-numeric-literals': 'error',
@@ -295,8 +294,6 @@ module.exports = {
     'import/unambiguous': 'error',
     'import/no-amd': 'error',
     'import/first': 'error',
-    'import/exports-last': 'error',
-    'import/max-dependencies': 'error',
     'import/no-named-default': 'error',
     'import/no-commonjs': 'error',
     'import/no-relative-packages': 'error',
@@ -543,6 +540,10 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'react/jsx-no-constructed-context-values': 'off',
     'react/no-object-type-as-default-prop': 'off',
+
+    //jsx-a11y
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
   settings: {
     react: {

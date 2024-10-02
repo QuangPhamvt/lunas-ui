@@ -12,20 +12,23 @@ import {
 import EmailInput from './components/EmailInput'
 import PasswordInput from './components/PasswordInput'
 import { Button, Form, FormField } from '@/Atoms'
-import FullnameInput from './components/FullnameInput'
+import FullNameInput from './components/FullNameInput'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/libs'
 import { useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
 import { SignInModel, SignUpModel } from './model'
+import { PuffLoader } from 'react-spinners'
 
 interface IAuthFormProps extends HTMLAttributes<HTMLDivElement> {
   initialTitle?: 'SIGN_IN' | 'SIGN_OUT'
+  isLoading?: boolean
   onSignIn?: (parameters: z.infer<typeof SignInModel>) => void
+  onSignUp?: (parameters: z.infer<typeof SignUpModel>) => void
 }
 const AuthForm = memo(
   forwardRef<HTMLDivElement, IAuthFormProps>(
-    ({ initialTitle = 'SIGN_IN', title, onSignIn, ...props }, reference) => {
+    ({ initialTitle = 'SIGN_IN', isLoading = false, onSignIn, onSignUp, ...props }, reference) => {
       const [state, setState] = useState<'SIGN_IN' | 'SIGN_OUT'>(initialTitle)
       const [registerStep, setRegisterStep] = useState<'FIRST' | 'SECOND'>('FIRST')
       const [isDisabledSignIn, setIsDisabledSignIn] = useState<boolean>(true)
@@ -75,13 +78,19 @@ const AuthForm = memo(
         setRegisterStep(step)
       }, [])
 
-      const onSignInSubmit = useCallback((data: z.infer<typeof SignInModel>) => {
-        onSignIn?.(data)
-      }, [])
+      const onSignInSubmit = useCallback(
+        (data: z.infer<typeof SignInModel>) => {
+          onSignIn?.(data)
+        },
+        [onSignIn],
+      )
 
-      const onSignUpSubmit = useCallback((data: z.infer<typeof SignUpModel>) => {
-        console.log(data)
-      }, [])
+      const onSignUpSubmit = useCallback(
+        (data: z.infer<typeof SignUpModel>) => {
+          onSignUp?.(data)
+        },
+        [onSignUp],
+      )
 
       const headerRender = useMemo(
         () => (
@@ -172,9 +181,11 @@ const AuthForm = memo(
                 <Button
                   type="submit"
                   disabled={isDisabledSignIn}
-                  className="w-full rounded-sm py-2"
+                  className={cn('w-full rounded-sm py-2', {
+                    'duration-[3000ms] animate-pulse opacity-60': isLoading,
+                  })}
                 >
-                  Đăng nhập
+                  {isLoading ? <PuffLoader color="#fff" size={24} /> : <span>Đăng nhập</span>}
                 </Button>
 
                 <Flex justify="between" width="full" p={0} className="text-ui-tertiary-400">
@@ -187,7 +198,17 @@ const AuthForm = memo(
             </form>
           </Form>
         ),
-        [state, isDisabledSignIn, signInControl, emailErrorMessage, passwordErrorMessage],
+        [
+          isLoading,
+          handleToggleState,
+          onSignInSubmit,
+          state,
+          isDisabledSignIn,
+          signInControl,
+          emailErrorMessage,
+          passwordErrorMessage,
+          signInForm,
+        ],
       )
 
       const registerRender = useMemo(
@@ -225,7 +246,7 @@ const AuthForm = memo(
                   name="fullname"
                   control={signUpControl}
                   render={({ field: { onChange, onBlur } }) => (
-                    <FullnameInput
+                    <FullNameInput
                       errorMessage={signUpFullnameErrorMessage}
                       onChange={onChange}
                       onBlur={onBlur}
@@ -293,9 +314,11 @@ const AuthForm = memo(
                 <Button
                   type="submit"
                   disabled={isDisabledSignOut}
-                  className="w-full rounded-sm py-2"
+                  className={cn('w-full rounded-sm py-2', {
+                    'duration-[3000ms] animate-pulse opacity-60': isLoading,
+                  })}
                 >
-                  Đăng ký
+                  {isLoading ? <PuffLoader color="#fff" size={24} /> : <span>Đăng ký</span>}
                 </Button>
 
                 <Flex justify="between" width="full" p={0} className="text-ui-tertiary-400">
@@ -310,13 +333,19 @@ const AuthForm = memo(
           </Form>
         ),
         [
+          isLoading,
           state,
           registerStep,
+          signUpForm,
           signUpControl,
           signUpEmailErrorMessage,
           signUpFullnameErrorMessage,
           signUpPasswordErrorMessage,
           signUpConfirmPasswordErrorMessage,
+          isDisabledSignOut,
+          handleToggleState,
+          handleToggleRegisterStep,
+          onSignUpSubmit,
         ],
       )
 
@@ -341,7 +370,7 @@ const AuthForm = memo(
         const { isValid, isDirty } = signInFormState
         const isDisabled = !isValid || !isDirty || !signInEmail || !signInPassword
         setIsDisabledSignIn(isDisabled)
-      }, [signInFormState.isDirty, signInFormState.isValid, signInEmail, signInPassword])
+      }, [signInFormState, signInEmail, signInPassword])
 
       useLayoutEffect(() => {
         const { isValid, isDirty } = signUpFormState
@@ -353,14 +382,7 @@ const AuthForm = memo(
           !signUpPassword ||
           !signUpConfirmPassword
         setIsDisabledSignOut(isDisabled)
-      }, [
-        signUpFormState.isDirty,
-        signUpFormState.isValid,
-        signUpEmail,
-        signUpFullname,
-        signUpPassword,
-        signUpConfirmPassword,
-      ])
+      }, [signUpEmail, signUpFullname, signUpPassword, signUpFormState, signUpConfirmPassword])
 
       return (
         <Flex

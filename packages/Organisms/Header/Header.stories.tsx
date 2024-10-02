@@ -12,7 +12,8 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    user: null,
+    onSignIn: () => console.log('Sign in'),
+    onSignUp: () => console.log('Sign up'),
   },
 }
 
@@ -27,5 +28,5 @@ export const WithUser: Story = {
       avatar: '',
     },
     onSettingSelected: (value) => console.log(value),
-  }
+  },
 }

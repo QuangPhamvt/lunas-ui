@@ -18,7 +18,7 @@ interface IFullnameInputProps extends HTMLAttributes<HTMLDivElement> {
   onBlur?: () => void
   onInputChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
-const FullnameInput = memo(
+const FullNameInput = memo(
   forwardRef<HTMLDivElement, IFullnameInputProps>((props, reference) => {
     const { errorMessage = '', className, onClick, onBlur, onInputChange, ...rest } = props
     const inputReference = useRef<HTMLInputElement>(null)
@@ -123,5 +123,5 @@ const FullnameInput = memo(
     )
   }),
 )
-FullnameInput.displayName = 'FullnameInput'
-export default FullnameInput
+FullNameInput.displayName = 'FullNameInput'
+export default FullNameInput

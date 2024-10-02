@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import { cva } from 'class-variance-authority'
 import { InputType } from 'storybook/internal/types'
 

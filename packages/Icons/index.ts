@@ -1,4 +1,3 @@
-/* eslint-disable import/max-dependencies */
 export { default as AvatarIcon } from './AvatarIcon'
 export { default as BlackDefaultLogo } from './BlackDefaultLogo'
 export { default as BlackDefaultLogoWithIcon } from './BlackDefaultLogoWithIcon'
