@@ -1,7 +1,7 @@
 {
   "name": "@customafk/lunas-ui",
   "private": false,
-  "version": "0.0.0-n",
+  "version": "0.0.0-s",
   "type": "module",
   "homepage": "https://docs.customafk.com",
   "repository": {
@@ -86,6 +86,7 @@
     "eslint-plugin-react-form-fields": "^1.2.22",
     "eslint-plugin-react-hook-form": "^0.3.0",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-perf": "^3.3.2",
     "eslint-plugin-react-prefer-function-component": "^3.3.0",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-sonar": "^0.13.2",

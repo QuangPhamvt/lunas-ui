@@ -13,6 +13,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react-hook-form/recommended',
     'plugin:react-form-fields/recommended',
+    'plugin:react-perf/recommended',
     'plugin:react-prefer-function-component/recommended',
   ],
   plugins: [
@@ -23,6 +24,7 @@ module.exports = {
     'validate-jsx-nesting',
     'sonar',
     'unicorn',
+    'react-perf',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'packages/**/*.stories.tsx'],
   parser: '@typescript-eslint/parser',

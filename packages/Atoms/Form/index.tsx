@@ -2,20 +2,22 @@ import * as React from 'react'
 import * as LabelPrimitive from '@radix-ui/react-label'
 import { Slot } from '@radix-ui/react-slot'
 import {
-  Controller,
-  ControllerProps,
-  FieldPath,
-  FieldValues,
-  FormProvider as Form,
-  useFormContext,
+  Controller as ControllerBase,
+  ControllerProps as ControllerPropsBase,
+  FieldPath as FieldPathBase,
+  FieldValues as FieldValuesBase,
+  FormProvider as FormProviderBase,
+  useFormContext as useFormContextBase,
 } from 'react-hook-form'
 
 import { Label } from '@/Atoms/Label'
 import { cn } from '@/libs'
 
+const Form = FormProviderBase
+
 type FormFieldContextValue<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TFieldValues extends FieldValuesBase = FieldValuesBase,
+  TName extends FieldPathBase<TFieldValues> = FieldPathBase<TFieldValues>,
 > = {
   name: TName
 }
@@ -23,14 +25,14 @@ type FormFieldContextValue<
 const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue)
 
 const FormField = <
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TFieldValues extends FieldValuesBase = FieldValuesBase,
+  TName extends FieldPathBase<TFieldValues> = FieldPathBase<TFieldValues>,
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: ControllerPropsBase<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
+      <ControllerBase {...props} />
     </FormFieldContext.Provider>
   )
 }
@@ -38,7 +40,7 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
+  const { getFieldState, formState } = useFormContextBase()
 
   const fieldState = getFieldState(fieldContext.name, formState)
 
