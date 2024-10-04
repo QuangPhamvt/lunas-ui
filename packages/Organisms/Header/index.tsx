@@ -1,7 +1,7 @@
 import { Badge, Button } from '@/Atoms'
 import NavbarItem from '@/Atoms/Navbar'
 import {
-  DefaultLogo,
+  DefaultLogoWithIcon,
   LocalCartIcon,
   Lucide2ChartBarIcon,
   Lucide2NewPaperIcon,
@@ -29,24 +29,32 @@ const Header = memo(
 
     const isNavSelected = useMemo(() => (nav: THeaderNav) => activeNav === nav, [activeNav])
 
-    const handleNavSelected = useCallback(
-      (nav: THeaderNav) => {
-        setActiveNav(nav)
-        if (onNavSelected && activeNav !== nav) {
-          onNavSelected(nav)
-        }
-      },
-      [activeNav, onNavSelected],
-    )
-
     const handleSettingSelected = useCallback(
       (value: TUserSettingSelect) => {
-        if (onSettingSelected) {
-          onSettingSelected(value)
-        }
+        onSettingSelected?.(value)
       },
       [onSettingSelected],
     )
+
+    const handleSelectCategory = useCallback(() => {
+      setActiveNav('CATEGORY')
+      onNavSelected?.('CATEGORY')
+    }, [onNavSelected])
+
+    const handleSelectSeries = useCallback(() => {
+      setActiveNav('SERIES')
+      onNavSelected?.('SERIES')
+    }, [onNavSelected])
+
+    const handleSelectGuide = useCallback(() => {
+      setActiveNav('GUIDE')
+      onNavSelected?.('GUIDE')
+    }, [onNavSelected])
+
+    const handleSelectNews = useCallback(() => {
+      setActiveNav('NEWS')
+      onNavSelected?.('NEWS')
+    }, [onNavSelected])
 
     return (
       <header
@@ -55,7 +63,7 @@ const Header = memo(
         {...rest}
       >
         <Flex className="h-16 w-33 shrink grow-0" justify="center" pr={9}>
-          <DefaultLogo />
+          <DefaultLogoWithIcon />
         </Flex>
 
         <Flex flexGrow={1} gap={0} className="text-ui-text-800">
@@ -64,7 +72,7 @@ const Header = memo(
             icon={<Lucide2ChartBarIcon />}
             isActive={isNavSelected('CATEGORY')}
             className="px-4"
-            onClick={() => handleNavSelected('CATEGORY')}
+            onClick={handleSelectCategory}
           >
             Danh mục
           </NavbarItem>
@@ -73,7 +81,7 @@ const Header = memo(
             icon={<Lucide2Row2Icon />}
             isActive={isNavSelected('SERIES')}
             className="px-4"
-            onClick={() => handleNavSelected('SERIES')}
+            onClick={handleSelectSeries}
           >
             Series
           </NavbarItem>
@@ -82,7 +90,7 @@ const Header = memo(
             icon={<Lucide2BookIcon />}
             isActive={isNavSelected('GUIDE')}
             className="px-4"
-            onClick={() => handleNavSelected('GUIDE')}
+            onClick={handleSelectGuide}
           >
             Hướng dẫn
           </NavbarItem>
@@ -91,7 +99,7 @@ const Header = memo(
             icon={<Lucide2NewPaperIcon />}
             isActive={isNavSelected('NEWS')}
             className="px-4"
-            onClick={() => handleNavSelected('NEWS')}
+            onClick={handleSelectNews}
           >
             Tin tức
           </NavbarItem>

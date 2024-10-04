@@ -15,7 +15,7 @@ import { Button, Form, FormField } from '@/Atoms'
 import FullNameInput from './components/FullNameInput'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/libs'
-import { useForm, useWatch } from 'react-hook-form'
+import { ControllerRenderProps, useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
 import { SignInModel, SignUpModel } from './model'
 import { PuffLoader } from 'react-spinners'
@@ -25,10 +25,23 @@ interface IAuthFormProps extends HTMLAttributes<HTMLDivElement> {
   isLoading?: boolean
   onSignIn?: (parameters: z.infer<typeof SignInModel>) => void
   onSignUp?: (parameters: z.infer<typeof SignUpModel>) => void
+  onChangeToSignIn?: () => void
+  onChangeToSignUp?: () => void
 }
 const AuthForm = memo(
   forwardRef<HTMLDivElement, IAuthFormProps>(
-    ({ initialTitle = 'SIGN_IN', isLoading = false, onSignIn, onSignUp, ...props }, reference) => {
+    (
+      {
+        initialTitle = 'SIGN_IN',
+        isLoading = false,
+        onSignIn,
+        onSignUp,
+        onChangeToSignIn,
+        onChangeToSignUp,
+        ...props
+      },
+      reference,
+    ) => {
       const [state, setState] = useState<'SIGN_IN' | 'SIGN_OUT'>(initialTitle)
       const [registerStep, setRegisterStep] = useState<'FIRST' | 'SECOND'>('FIRST')
       const [isDisabledSignIn, setIsDisabledSignIn] = useState<boolean>(true)
@@ -70,12 +83,22 @@ const AuthForm = memo(
 
       const signUpConfirmPassword = useWatch({ control: signUpControl, name: 'confirmPassword' })
 
-      const handleToggleState = useCallback((value: 'SIGN_IN' | 'SIGN_OUT') => {
-        setState(value)
+      const handleChangeToSignIn = useCallback(() => {
+        setState('SIGN_IN')
+        onChangeToSignIn?.()
+      }, [onChangeToSignIn])
+
+      const handleChangeToSignUp = useCallback(() => {
+        setState('SIGN_OUT')
+        onChangeToSignUp?.()
+      }, [onChangeToSignUp])
+
+      const handleSignUpFirstStep = useCallback(() => {
+        setRegisterStep('FIRST')
       }, [])
 
-      const handleToggleRegisterStep = useCallback((step: 'FIRST' | 'SECOND') => {
-        setRegisterStep(step)
+      const handleSignUpSecondStep = useCallback(() => {
+        setRegisterStep('SECOND')
       }, [])
 
       const onSignInSubmit = useCallback(
@@ -134,6 +157,60 @@ const AuthForm = memo(
         [signUpFormState.errors.confirmPassword?.message],
       )
 
+      const signInEmailFieldRender = useCallback(
+        ({ field }: { field: ControllerRenderProps<z.infer<typeof SignInModel>, 'email'> }) => (
+          <EmailInput errorMessage={emailErrorMessage} {...field} />
+        ),
+        [emailErrorMessage],
+      )
+
+      const signInPwdFieldRender = useCallback(
+        ({ field }: { field: ControllerRenderProps<z.infer<typeof SignInModel>, 'password'> }) => (
+          <PasswordInput placeholder="Mật khẩu" errorMessage={passwordErrorMessage} {...field} />
+        ),
+        [passwordErrorMessage],
+      )
+
+      const signUpEmailFieldRender = useCallback(
+        ({ field }: { field: ControllerRenderProps<z.infer<typeof SignUpModel>, 'email'> }) => (
+          <EmailInput errorMessage={signUpEmailErrorMessage} {...field} />
+        ),
+        [signUpEmailErrorMessage],
+      )
+
+      const signUpFullnameFieldRender = useCallback(
+        ({ field }: { field: ControllerRenderProps<z.infer<typeof SignUpModel>, 'fullname'> }) => (
+          <FullNameInput errorMessage={signUpFullnameErrorMessage} {...field} />
+        ),
+        [signUpFullnameErrorMessage],
+      )
+
+      const signUpPwdFieldRender = useCallback(
+        ({ field }: { field: ControllerRenderProps<z.infer<typeof SignUpModel>, 'password'> }) => (
+          <PasswordInput
+            placeholder="Mật khẩu"
+            errorMessage={signUpPasswordErrorMessage}
+            {...field}
+          />
+        ),
+        [signUpPasswordErrorMessage],
+      )
+
+      const signUpConfirmPwdFieldRender = useCallback(
+        ({
+          field,
+        }: {
+          field: ControllerRenderProps<z.infer<typeof SignUpModel>, 'confirmPassword'>
+        }) => (
+          <PasswordInput
+            placeholder="Nhập lại mật khẩu"
+            errorMessage={signUpConfirmPasswordErrorMessage}
+            {...field}
+          />
+        ),
+        [signUpConfirmPasswordErrorMessage],
+      )
+
       const signInRender = useMemo(
         () => (
           <Form {...signInForm}>
@@ -145,36 +222,15 @@ const AuthForm = memo(
             >
               <Flex
                 vertical
-                gapY={emailErrorMessage ? 8 : 4}
                 width="full"
+                gapY={emailErrorMessage ? 8 : 4}
                 p={0}
                 pb={passwordErrorMessage ? 4 : 0}
                 className="overflow-visible"
               >
-                <FormField
-                  control={signInControl}
-                  name="email"
-                  render={({ field }) => (
-                    <EmailInput
-                      errorMessage={emailErrorMessage}
-                      onChange={field.onChange}
-                      onBlur={field.onBlur}
-                    />
-                  )}
-                />
+                <FormField control={signInControl} name="email" render={signInEmailFieldRender} />
 
-                <FormField
-                  control={signInControl}
-                  name="password"
-                  render={({ field }) => (
-                    <PasswordInput
-                      placeholder="Mật khẩu"
-                      errorMessage={passwordErrorMessage}
-                      onChange={field.onChange}
-                      onBlur={field.onBlur}
-                    />
-                  )}
-                />
+                <FormField control={signInControl} name="password" render={signInPwdFieldRender} />
               </Flex>
 
               <Flex vertical gapY={3} width="full" p={0} className="overflow-visible">
@@ -190,7 +246,7 @@ const AuthForm = memo(
 
                 <Flex justify="between" width="full" p={0} className="text-ui-tertiary-400">
                   <span className="text-ui-small-note">Quên mật khẩu</span>
-                  <button type="button" onClick={() => handleToggleState('SIGN_OUT')}>
+                  <button type="button" onClick={handleChangeToSignUp}>
                     <span className="text-ui-small-note">Tạo tài khoản</span>
                   </button>
                 </Flex>
@@ -200,18 +256,20 @@ const AuthForm = memo(
         ),
         [
           isLoading,
-          handleToggleState,
-          onSignInSubmit,
           state,
           isDisabledSignIn,
           signInControl,
+          signInForm,
           emailErrorMessage,
           passwordErrorMessage,
-          signInForm,
+          handleChangeToSignUp,
+          signInEmailFieldRender,
+          signInPwdFieldRender,
+          onSignInSubmit,
         ],
       )
 
-      const registerRender = useMemo(
+      const signUpRender = useMemo(
         () => (
           <Form {...signUpForm}>
             <form
@@ -230,28 +288,12 @@ const AuthForm = memo(
                   hidden: registerStep !== 'FIRST',
                 })}
               >
-                <FormField
-                  name="email"
-                  control={signUpControl}
-                  render={({ field: { onChange, onBlur } }) => (
-                    <EmailInput
-                      errorMessage={signUpEmailErrorMessage}
-                      onChange={onChange}
-                      onBlur={onBlur}
-                    />
-                  )}
-                />
+                <FormField name="email" control={signUpControl} render={signUpEmailFieldRender} />
 
                 <FormField
                   name="fullname"
                   control={signUpControl}
-                  render={({ field: { onChange, onBlur } }) => (
-                    <FullNameInput
-                      errorMessage={signUpFullnameErrorMessage}
-                      onChange={onChange}
-                      onBlur={onBlur}
-                    />
-                  )}
+                  render={signUpFullnameFieldRender}
                 />
               </Flex>
 
@@ -265,30 +307,12 @@ const AuthForm = memo(
                   hidden: registerStep !== 'SECOND',
                 })}
               >
-                <FormField
-                  control={signUpControl}
-                  name="password"
-                  render={({ field: { onChange, onBlur } }) => (
-                    <PasswordInput
-                      placeholder="Mật khẩu"
-                      errorMessage={signUpPasswordErrorMessage}
-                      onChange={onChange}
-                      onBlur={onBlur}
-                    />
-                  )}
-                />
+                <FormField control={signUpControl} name="password" render={signUpPwdFieldRender} />
 
                 <FormField
                   control={signUpControl}
                   name="confirmPassword"
-                  render={({ field: { onChange, onBlur } }) => (
-                    <PasswordInput
-                      placeholder="Nhập lại mật khẩu"
-                      errorMessage={signUpConfirmPasswordErrorMessage}
-                      onChange={onChange}
-                      onBlur={onBlur}
-                    />
-                  )}
+                  render={signUpConfirmPwdFieldRender}
                 />
               </Flex>
 
@@ -298,7 +322,7 @@ const AuthForm = memo(
                   className={cn('h-2 w-8 rounded-full bg-neutral-300', {
                     'bg-ui-tertiary-300': registerStep === 'FIRST',
                   })}
-                  onClick={() => handleToggleRegisterStep('FIRST')}
+                  onClick={handleSignUpFirstStep}
                 />
 
                 <button
@@ -306,7 +330,7 @@ const AuthForm = memo(
                   className={cn('h-2 w-8 rounded-full bg-neutral-300', {
                     'bg-ui-tertiary-300': registerStep === 'SECOND',
                   })}
-                  onClick={() => handleToggleRegisterStep('SECOND')}
+                  onClick={handleSignUpSecondStep}
                 />
               </Flex>
 
@@ -324,7 +348,7 @@ const AuthForm = memo(
                 <Flex justify="between" width="full" p={0} className="text-ui-tertiary-400">
                   <span className="text-ui-small-note">Quên mật khẩu</span>
 
-                  <button type="button" onClick={() => handleToggleState('SIGN_IN')}>
+                  <button type="button" onClick={handleChangeToSignIn}>
                     <span className="text-ui-small-note">Đăng nhập lại</span>
                   </button>
                 </Flex>
@@ -343,8 +367,13 @@ const AuthForm = memo(
           signUpPasswordErrorMessage,
           signUpConfirmPasswordErrorMessage,
           isDisabledSignOut,
-          handleToggleState,
-          handleToggleRegisterStep,
+          handleChangeToSignIn,
+          handleSignUpFirstStep,
+          handleSignUpSecondStep,
+          signUpEmailFieldRender,
+          signUpFullnameFieldRender,
+          signUpPwdFieldRender,
+          signUpConfirmPwdFieldRender,
           onSignUpSubmit,
         ],
       )
@@ -398,7 +427,7 @@ const AuthForm = memo(
 
           {signInRender}
 
-          {registerRender}
+          {signUpRender}
 
           {oauthRender}
         </Flex>

@@ -20,6 +20,12 @@ export const LogIn: Story = {
     onSignUp(parameters) {
       console.log('Sign up', parameters)
     },
+    onChangeToSignIn() {
+      console.log('Change to sign in')
+    },
+    onChangeToSignUp() {
+      console.log('Change to sign up')
+    },
   },
 }
 
@@ -33,6 +39,12 @@ export const Register: Story = {
     },
     onSignUp(parameters) {
       console.log('Sign up', parameters)
+    },
+    onChangeToSignIn() {
+      console.log('Change to sign in')
+    },
+    onChangeToSignUp() {
+      console.log('Change to sign up')
     },
   },
 }
