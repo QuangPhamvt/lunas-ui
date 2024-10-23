@@ -412,21 +412,6 @@ module.exports = {
       { cases: { kebabCase: true, camelCase: true, pascalCase: true } },
     ],
     'unicorn/import-index': ['error', { ignoreImports: true }],
-    'unicorn/prevent-abbreviations': [
-      'error',
-      {
-        allowList: {
-          args: true,
-          ctx: true,
-          props: true,
-          Props: true,
-          req: true,
-          res: true,
-        },
-        ignore: ['\\.e2e$', '\\.e2e-spec$'],
-        checkShorthandProperties: true,
-      },
-    ],
     'unicorn/prefer-object-from-entries': [
       'error',
       {
@@ -434,6 +419,8 @@ module.exports = {
       },
     ],
     'unicorn/prefer-export-from': ['error', { ignoreUsedVariables: true }],
+
+    'react-perf/jsx-no-new-object-as-prop': 'off',
 
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 

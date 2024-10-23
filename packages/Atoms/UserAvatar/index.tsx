@@ -1,7 +1,7 @@
 import { AvatarIcon } from '@/Icons'
 import { cn } from '@/libs'
 import colorHash from '@/libs/color-hash'
-import React, { memo, useMemo } from 'react'
+import React, { forwardRef, memo } from 'react'
 
 interface IProps extends React.HTMLAttributes<HTMLElement> {
   readonly fullname: string
@@ -10,8 +10,7 @@ interface IProps extends React.HTMLAttributes<HTMLElement> {
   readonly size?: number
 }
 const UserAvatar = memo(
-  React.forwardRef<HTMLDivElement, IProps>(({ fullname, email, src: source, size }, reference) => {
-    const bgColor = useMemo(() => colorHash.hex(fullname + email), [fullname, email])
+  forwardRef<HTMLDivElement, IProps>(({ fullname, email, src: source, size }, reference) => {
     return (
       <div ref={reference} className="flex size-fit items-center justify-center rounded-full">
         {source ? (
@@ -23,7 +22,7 @@ const UserAvatar = memo(
             alt={fullname}
           />
         ) : (
-          <AvatarIcon bgColor={bgColor} size={size} />
+          <AvatarIcon bgColor={colorHash.hex(fullname + email)} size={size} />
         )}
       </div>
     )

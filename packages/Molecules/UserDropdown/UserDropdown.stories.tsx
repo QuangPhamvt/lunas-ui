@@ -18,8 +18,5 @@ export const Default: Story = {
       email: 'quangpm220503vt@gmail.com',
       avatar: '',
     },
-    onEmitSelect: (value: string) => {
-      console.log(value)
-    },
   },
 }

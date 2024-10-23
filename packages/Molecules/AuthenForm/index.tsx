@@ -117,7 +117,7 @@ const AuthForm = memo(
 
       const headerRender = useMemo(
         () => (
-          <Flex vertical gapY={5} p={0} justify="center">
+          <Flex vertical gapY="5" p="0" justify="center">
             <DefaultLogoWithIcon />
             <h1 className="text-2xl font-bold text-ui-text-700">
               {state === 'SIGN_IN' ? 'Đăng nhập' : 'Đăng ký'}
@@ -223,9 +223,9 @@ const AuthForm = memo(
               <Flex
                 vertical
                 width="full"
-                gapY={emailErrorMessage ? 8 : 4}
-                p={0}
-                pb={passwordErrorMessage ? 4 : 0}
+                gapY={emailErrorMessage ? '8' : '4'}
+                p="0"
+                pb={passwordErrorMessage ? '4' : '0'}
                 className="overflow-visible"
               >
                 <FormField control={signInControl} name="email" render={signInEmailFieldRender} />
@@ -233,18 +233,20 @@ const AuthForm = memo(
                 <FormField control={signInControl} name="password" render={signInPwdFieldRender} />
               </Flex>
 
-              <Flex vertical gapY={3} width="full" p={0} className="overflow-visible">
+              <Flex vertical gapY="3" width="full" p="0" className="overflow-visible">
                 <Button
+                  disabledAnimation
                   type="submit"
                   disabled={isDisabledSignIn}
                   className={cn('w-full rounded-sm py-2', {
-                    'duration-[3000ms] animate-pulse opacity-60': isLoading,
+                    'duration-3000 animate-pulse opacity-60': isLoading,
                   })}
+                  rootClassName="w-full"
                 >
                   {isLoading ? <PuffLoader color="#fff" size={24} /> : <span>Đăng nhập</span>}
                 </Button>
 
-                <Flex justify="between" width="full" p={0} className="text-ui-tertiary-400">
+                <Flex justify="between" width="full" p="0" className="text-ui-tertiary-400">
                   <span className="text-ui-small-note">Quên mật khẩu</span>
                   <button type="button" onClick={handleChangeToSignUp}>
                     <span className="text-ui-small-note">Tạo tài khoản</span>
@@ -280,10 +282,10 @@ const AuthForm = memo(
             >
               <Flex
                 vertical
-                gapY={signUpEmailErrorMessage ? 8 : 4}
+                gapY={signUpEmailErrorMessage ? '8' : '4'}
                 width="full"
-                p={0}
-                pb={signUpFullnameErrorMessage ? 4 : 0}
+                p="0"
+                pb={signUpFullnameErrorMessage ? '8' : '4'}
                 className={cn('grow overflow-visible', {
                   hidden: registerStep !== 'FIRST',
                 })}
@@ -299,10 +301,10 @@ const AuthForm = memo(
 
               <Flex
                 vertical
-                gapY={signUpPasswordErrorMessage ? 8 : 4}
+                gapY={signUpPasswordErrorMessage ? '8' : '4'}
                 width="full"
-                p={0}
-                pb={signUpConfirmPasswordErrorMessage ? 4 : 0}
+                p="0"
+                pb={signUpConfirmPasswordErrorMessage ? '4' : '0'}
                 className={cn('grow overflow-visible', {
                   hidden: registerStep !== 'SECOND',
                 })}
@@ -316,7 +318,7 @@ const AuthForm = memo(
                 />
               </Flex>
 
-              <Flex gapX={2} height="fit" p={0} justify="start" width="full">
+              <Flex gapX="2" height="fit" p="0" justify="start" width="full">
                 <button
                   type="button"
                   className={cn('h-2 w-8 rounded-full bg-neutral-300', {
@@ -334,18 +336,19 @@ const AuthForm = memo(
                 />
               </Flex>
 
-              <Flex vertical gapY={3} width="full" p={0} className="overflow-visible">
+              <Flex vertical gapY="3" width="full" p="0" className="overflow-visible">
                 <Button
                   type="submit"
                   disabled={isDisabledSignOut}
                   className={cn('w-full rounded-sm py-2', {
                     'duration-[3000ms] animate-pulse opacity-60': isLoading,
                   })}
+                  rootClassName="w-full"
                 >
                   {isLoading ? <PuffLoader color="#fff" size={24} /> : <span>Đăng ký</span>}
                 </Button>
 
-                <Flex justify="between" width="full" p={0} className="text-ui-tertiary-400">
+                <Flex justify="between" width="full" p="0" className="text-ui-tertiary-400">
                   <span className="text-ui-small-note">Quên mật khẩu</span>
 
                   <button type="button" onClick={handleChangeToSignIn}>
@@ -380,14 +383,14 @@ const AuthForm = memo(
 
       const oauthRender = useMemo(() => {
         return (
-          <Flex vertical gapY={4} p={0} width="full" className="overflow-visible">
-            <Flex gapX={3} p={0} justify="center" width="full">
+          <Flex vertical gapY="4" p="0" width="full" className="overflow-visible">
+            <Flex gapX="3" p="0" justify="center" width="full">
               <div className="grow border-t border-ui-text-300 bg-ui-text-300" />
               <span className="w-fit font-medium text-ui-text-600">Đăng nhập bằng</span>
               <div className="grow border-t border-ui-text-300 bg-ui-text-300" />
             </Flex>
 
-            <Button className="w-full rounded-sm" variant="outline">
+            <Button className="w-full rounded-sm" rootClassName="w-full" variant="outline">
               <LocalGoogleIcon size={24} />
               <span className="text-ui-p text-ui-text-300">Google</span>
             </Button>
@@ -418,9 +421,9 @@ const AuthForm = memo(
           ref={reference}
           vertical
           width={480}
-          gapY={6}
-          py={8}
-          className="rounded-xl bg-ui-white px-12 shadow-ui-muli"
+          gapY="6"
+          py="8"
+          className="rounded-xl bg-neutral-50 px-12 shadow-ui-muli"
           {...props}
         >
           {headerRender}

@@ -71,7 +71,8 @@ const Input = memo(
             ],
             {
               'border-ui-primary-400 outline-ui-primary-200 ring-4 ring-ui-primary-200': isFocused,
-              'border-ui-destructive-300 hover:border-ui-destructive-300': isErrored,
+              'border-ui-destructive-300 bg-ui-destructive-50 hover:border-ui-destructive-300':
+                isErrored,
               'border-ui-destructive-400 outline-ui-destructive-200 ring-4 ring-ui-destructive-200':
                 isErrored && isFocused,
             },
@@ -91,14 +92,14 @@ const Input = memo(
           <input
             ref={inputReference}
             value={inputValue}
-            className="grow bg-transparent caret-ui-primary-500 outline-none placeholder:text-ui-text-400"
+            className="grow bg-transparent text-sm caret-ui-primary-500 outline-none placeholder:text-ui-text-400"
             onChange={handleInputChange}
             placeholder={placeholder}
           />
           <Flex
             width={16}
             height={16}
-            p={0}
+            p="0"
             justify="center"
             className={cn([
               'opacity-1 z-50 rounded-full',

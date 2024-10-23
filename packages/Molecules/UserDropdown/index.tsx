@@ -1,5 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/Atoms'
-import { UserAvartarTriggerButton } from './components'
+import { UserAvatarTriggerButton } from './components'
 import { memo, useCallback } from 'react'
 import { useBoolean } from '@/hooks'
 import { LocalHeartIcon, LocalListIcon, LocalUserIcon, Lucide2LogOutIcon } from '@/Icons'
@@ -23,29 +23,33 @@ const UserDropdown = memo(({ onSelected = () => undefined, user }: IProps) => {
     },
     [onSelected],
   )
+  const handleFavoriteSelected = useCallback(() => handleSelect('FAVORITE'), [handleSelect])
+  const handleProfileSelected = useCallback(() => handleSelect('PROFILE'), [handleSelect])
+  const handleAddressSelected = useCallback(() => handleSelect('ADDRESS'), [handleSelect])
+  const handleLogoutSelected = useCallback(() => handleSelect('LOGOUT'), [handleSelect])
   return (
     <DropdownMenu open={isOpen} onOpenChange={handleToggle}>
-      <DropdownMenuTrigger className="p-0">
-        <UserAvartarTriggerButton user={user} focused={isOpen} />
+      <DropdownMenuTrigger className="p-0 hover:bg-neutral-200">
+        <UserAvatarTriggerButton user={user} focused={isOpen} />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="top-44 size-fit text-ui-note font-medium">
+      <DropdownMenuContent className="top-44 size-fit text-ui-note font-normal">
         <DropdownMenuItem
-          className="h-10 w-full justify-start gap-2 border-t"
-          onSelect={() => handleSelect('FAVORITE')}
+          className="h-10 w-full justify-start gap-2 border-t text-ui-text-700"
+          onSelect={handleFavoriteSelected}
         >
           <LocalHeartIcon size={16} />
 
           <p>Yêu thích</p>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="h-10" onSelect={() => handleSelect('PROFILE')}>
+        <DropdownMenuItem className="h-10" onSelect={handleProfileSelected}>
           <LocalUserIcon size={16} />
 
           <p>Thông tin cá nhân</p>
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="h-10" onSelect={() => handleSelect('ADDRESS')}>
+        <DropdownMenuItem className="h-10" onSelect={handleAddressSelected}>
           <LocalListIcon size={16} />
 
           <p>Danh sách địa chỉ</p>
@@ -53,7 +57,7 @@ const UserDropdown = memo(({ onSelected = () => undefined, user }: IProps) => {
 
         <DropdownMenuItem
           className="h-10 border-b border-b-gray-300"
-          onSelect={() => handleSelect('LOGOUT')}
+          onSelect={handleLogoutSelected}
         >
           <Lucide2LogOutIcon size={16} />
 

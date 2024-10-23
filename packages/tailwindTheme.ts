@@ -129,6 +129,9 @@ const themes = {
     'ui-status-bg-positive': 'linear-gradient(0deg, #C4FFD8 0%, #68FF9D 100%)',
     'ui-status-bg-negative': 'linear-gradient(0deg, #FECACA 0%, #FF8F8F 100%)',
     'ui-status-bg-neutral': 'linear-gradient(0deg, #E1EBFF 0%, #C7E8FF 100%)',
+    'ui-status-order': 'linear-gradient(282deg, #30C36D 6.81%, #6BCD8A 93.19%)',
+    'ui-status-out-of-stock': 'linear-gradient(282deg, #FF384A 7.07%, #FF5463 92.93%)',
+    'ui-status-in-stock': 'linear-gradient(282deg, #30A8FF 6.81%, #73BAED 93.19%)',
   },
   boxShadow: {
     'ui-sd-primary': '0 4px 20px 0 rgba(104, 109, 224, 0.5)',
@@ -136,7 +139,7 @@ const themes = {
     'ui-sd-destructive': '0 10px 10px 0 rgba(255, 56, 74, 0.15)',
     'ui-sd-accept': '0 10px 10px 0 rgba(46, 213, 115, 0.15)',
     'ui-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    'ui-soft': '0px 5px 50px 0px rgba(0, 67, 101, 0.08)',
+    'ui-soft': '0px 5px 12px 0px rgba(0, 67, 101, 0.08)',
     'ui-muli': '0px 5px 50px 0px rgba(0, 67, 101, 0.08), 0px 2px 6px 0px rgba(130, 169, 188, 0.08)',
     'ui-category-effect': '0px 4px 50px 0px rgba(0, 67, 101, 0.08)',
   },

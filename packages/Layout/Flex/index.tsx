@@ -3,6 +3,7 @@ import { cn } from '@/libs'
 import flexVariants from './flexVariant'
 import { commonLayout } from '../commons'
 
+type TSpace = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10'
 interface IFlexProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Is direction of the flex vertical,
@@ -53,61 +54,61 @@ interface IFlexProps extends HTMLAttributes<HTMLDivElement> {
    *
    * Default is `2`
    */
-  readonly gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly gap?: TSpace | Omit<string, TSpace>
   /**
    * Set the horizontal gap between the elements
    *
    * Default is `0`
    */
-  readonly gapX?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly gapX?: TSpace | Omit<string, TSpace>
   /**
    * Set the vertical gap between the elements
    *
    * Default is `0`
    */
-  readonly gapY?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly gapY?: TSpace | Omit<string, TSpace>
   /**
    * Set the padding for the component
    *
    * Default is `2`
    */
-  readonly p?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly p?: TSpace | Omit<string, TSpace>
   /**
    * Set the horizontal padding for the component
    *
    * Default is `0`
    */
-  readonly px?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly px?: TSpace | Omit<string, TSpace>
   /**
    * Set the vertical padding for the component
    *
    * Default is `0`
    */
-  readonly py?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly py?: TSpace | Omit<string, TSpace>
   /**
    * Set the top padding for the component
    *
    * Default is `0`
    */
-  readonly pt?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly pt?: TSpace | Omit<string, TSpace>
   /**
    * Set the right padding for the component
    *
    * Default is `0`
    */
-  readonly pr?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly pr?: TSpace | Omit<string, TSpace>
   /**
    * Set the bottom padding for the component
    *
    * Default is `0`
    */
-  readonly pb?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly pb?: TSpace | Omit<string, TSpace>
   /**
    * Set the left padding for the component
    *
    * Default is `0`
    */
-  readonly pl?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  readonly pl?: TSpace | Omit<string, TSpace>
   /**
    * Set the position for the component
    * Default is `relative`
@@ -230,10 +231,10 @@ const Flex = memo(
         height = 'fit',
         justify = 'start',
         align = 'center',
-        gap = 2,
+        gap = '2',
         gapX,
         gapY,
-        p = 2,
+        p = '0',
         px,
         py,
         pt,
@@ -311,16 +312,6 @@ const Flex = memo(
           className={cn(
             flexVariants({ wrap, justify, align }),
             commonLayout({
-              gap,
-              gapX,
-              gapY,
-              p,
-              px,
-              py,
-              pt,
-              pr,
-              pb,
-              pl,
               position,
               top,
               right,
@@ -330,7 +321,17 @@ const Flex = memo(
               flexShrink,
             }),
             {
-              'flex-col': vertical,
+              [`flex-col`]: vertical,
+              [`p-${p}`]: p,
+              [`px-${px}`]: px,
+              [`py-${py}`]: py,
+              [`pt-${pt}`]: pt,
+              [`pr-${pr}`]: pr,
+              [`pb-${pb}`]: pb,
+              [`pl-${pl}`]: pl,
+              [`gap-${gap}`]: gap,
+              [`gap-x-${gapX}`]: gapX,
+              [`gap-y-${gapY}`]: gapY,
             },
             className,
           )}

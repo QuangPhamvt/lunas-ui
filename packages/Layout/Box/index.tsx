@@ -261,13 +261,6 @@ const Box = memo(
           className={cn(
             boxVariant({ display }),
             commonLayout({
-              p,
-              px,
-              py,
-              pt,
-              pr,
-              pb,
-              pl,
               position,
               top,
               right,
@@ -276,6 +269,13 @@ const Box = memo(
               flexGrow,
               flexShrink,
             }),
+            `p-${p}`,
+            `px-${px}`,
+            `py-${py}`,
+            `pt-${pt}`,
+            `pr-${pr}`,
+            `pb-${pb}`,
+            `pl-${pl}`,
             className,
           )}
           style={generateStyle}

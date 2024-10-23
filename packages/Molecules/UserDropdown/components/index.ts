@@ -1,1 +1,1 @@
-export { default as UserAvartarTriggerButton } from './TriggerButton'
+export { default as UserAvatarTriggerButton } from './TriggerButton'

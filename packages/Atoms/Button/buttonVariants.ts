@@ -8,7 +8,7 @@ export const buttonVariants = cva(
         default: 'bg-ui-btn-primary enabled:active:ring-[#6C70F0]/20',
         secondary: 'bg-ui-btn-secondary enabled:active:ring-[#669BF4]/40',
         outline:
-          'border-ui-primary text-ui-primary border border-solid enabled:active:ring-[#737373]/20',
+          'border border-solid border-ui-primary-500 text-ui-primary-500 enabled:active:ring-[#737373]/20',
         ghost: 'text-ui-primary bg-ui-white enabled:active:ring-[#D4D4D4]/20',
         destructive: 'bg-ui-btn-destructive text-ui-white-primary enabled:active:ring-[#EF4444]/40',
         'destructive-outline':

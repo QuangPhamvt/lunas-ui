@@ -41,6 +41,11 @@ const PasswordInput = memo(
     const [inputValue, setInputValue] = useState<string>('')
     const [enableEye, setEnableEye] = useState<boolean>(false)
 
+    const [hoverEye, setHoverEye] = useState<boolean>(false)
+
+    const handleMouseMoveEye = useCallback(() => setHoverEye(true), [])
+    const handleMouseLeaveEye = useCallback(() => setHoverEye(false), [])
+
     const handleInputChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
         const {
@@ -64,7 +69,8 @@ const PasswordInput = memo(
 
     const handleEnableEye = useCallback(() => {
       setEnableEye((previous) => !previous)
-    }, [enableEye])
+      inputReference.current?.focus()
+    }, [])
 
     useLayoutEffect(() => {
       if (isFocused && inputReference.current) {
@@ -141,11 +147,18 @@ const PasswordInput = memo(
           onChange={handleInputChange}
           type={enableEye ? 'text' : 'password'}
         />
-        <button type="button" onClick={handleEnableEye} className="pr-3">
+        <button
+          type="button"
+          onClick={handleEnableEye}
+          className="pr-3"
+          onMouseMove={handleMouseMoveEye}
+          // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+          onMouseLeave={handleMouseLeaveEye}
+        >
           {enableEye ? (
-            <Lucide2EyeOffIcon size={16} color={isFocused ? '#606189' : '#B9BAC0'} />
+            <Lucide2EyeOffIcon size={16} color={isFocused || hoverEye ? '#606189' : '#B9BAC0'} />
           ) : (
-            <Lucide2EyeIcon size={16} color={isFocused ? '#606189' : '#B9BAC0'} />
+            <Lucide2EyeIcon size={16} color={isFocused || hoverEye ? '#606189' : '#B9BAC0'} />
           )}
         </button>
         {errorMessageRender}

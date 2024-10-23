@@ -1,5 +1,6 @@
 import { defineConfig } from 'tsup'
 
+// eslint-disable-next-line import/no-unused-modules, import/no-anonymous-default-export
 export default defineConfig({
   entryPoints: [
     './packages/hooks/index.ts',
@@ -23,6 +24,7 @@ export default defineConfig({
     '@radix-ui/react-label',
     '@radix-ui/react-slot',
     '@radix-ui/react-toast',
+    'embla-carousel-react',
     'class-variance-authority',
     'clsx',
     'luchide-react',
@@ -30,5 +32,6 @@ export default defineConfig({
     'react-hook-form',
     '@hookform/resolvers',
     'zod',
+    'framer-motion',
   ],
 })

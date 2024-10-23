@@ -1,5 +1,6 @@
 import { Lucide2CircleAlert, Lucide2MailIcon } from '@/Icons'
 import { cn } from '@/libs'
+import { motion, MotionProps } from 'framer-motion'
 import {
   ChangeEvent,
   forwardRef,
@@ -84,7 +85,7 @@ const EmailInput = memo(
     }, [errorMessage])
 
     return (
-      <div
+      <motion.div
         ref={reference}
         className={cn(
           [
@@ -108,7 +109,7 @@ const EmailInput = memo(
         )}
         onClick={handleFocus}
         onBlur={handleBlur}
-        {...rest}
+        {...(rest as MotionProps)}
       >
         {iconRender}
         <input
@@ -119,7 +120,7 @@ const EmailInput = memo(
           onChange={handleInputChange}
         />
         {errorMessageRender}
-      </div>
+      </motion.div>
     )
   }),
 )

@@ -16,17 +16,10 @@ interface IProps extends IFlexProps {
 const UserAvatarTriggerButton = memo(
   forwardRef<HTMLDivElement, IProps>(({ user, focused, ...props }, reference) => {
     return (
-      <Flex
-        px={2}
-        py={1}
-        gap={2}
-        ref={reference}
-        {...props}
-        className={String(focused ? 'bg-neutral-200' : '')}
-      >
+      <Flex px="2" py="1" gap="2" ref={reference} {...props}>
         <UserAvatar size={32} fullname={user.fullname} email={user.email} src={user.avatar} />
 
-        <p className="text-ui-p font-semibold text-ui-text-800">{user.username}</p>
+        <p className="text-ui-note font-semibold text-ui-text-700">{user.username}</p>
 
         <Lucide2ChevronDownIcon
           size={16}

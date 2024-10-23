@@ -2,6 +2,7 @@ import React from 'react'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { cn } from '@/libs'
 import { Check, Circle } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const { Root: DropdownMenu } = DropdownMenuPrimitive
 
@@ -17,18 +18,31 @@ const DropdownMenuTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger>
 >(({ className = '', children, ...props }, reference) => (
-  <DropdownMenuPrimitive.Trigger
-    {...props}
-    ref={reference}
-    className={cn(
-      'flex select-none gap-x-2 overflow-hidden rounded-lg px-2 py-1 outline-none',
-      'hover:bg-neutral-200',
-      'transition-colors duration-300 ease-in-out',
-      className,
-    )}
+  <motion.div
+    initial={{
+      opacity: 0,
+      scale: 0.8,
+    }}
+    animate={{
+      opacity: 1,
+      scale: 1,
+    }}
+    whileHover={{
+      opacity: 0.8,
+    }}
+    className="rounded-lg"
   >
-    {children}
-  </DropdownMenuPrimitive.Trigger>
+    <DropdownMenuPrimitive.Trigger
+      {...props}
+      ref={reference}
+      className={cn(
+        'flex select-none gap-x-2 overflow-hidden rounded-lg px-2 py-1 outline-none',
+        className,
+      )}
+    >
+      {children}
+    </DropdownMenuPrimitive.Trigger>
+  </motion.div>
 ))
 // eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName
@@ -88,6 +102,7 @@ const DropdownMenuContent = React.forwardRef<
 >(({ className, sideOffset = 4, ...props }, reference) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
+      {...props}
       ref={reference}
       sideOffset={sideOffset}
       className={cn(
@@ -104,7 +119,6 @@ const DropdownMenuContent = React.forwardRef<
         'data-[side=left]:slide-in-from-right-2',
         className,
       )}
-      {...props}
     />
   </DropdownMenuPrimitive.Portal>
 ))
@@ -117,19 +131,21 @@ const DropdownMenuItem = React.forwardRef<
     readonly inset?: boolean
   }
 >(({ className, inset, ...props }, reference) => (
-  <DropdownMenuPrimitive.Item
-    ref={reference}
-    className={cn(
-      'hover:cursor-pointer hover:bg-neutral-200 hover:text-ui-text-900',
-      'relative flex cursor-default select-none items-center gap-x-2 bg-ui-bg-white px-3 py-2 text-ui-p text-ui-text-700 outline-none',
-      'transition-colors duration-200',
-      'data-[disabled]:opacity-50',
-      'data-[disabled]:pointer-events-none',
-      inset && 'pl-8',
-      className,
-    )}
-    {...props}
-  />
+  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+    <DropdownMenuPrimitive.Item
+      ref={reference}
+      className={cn(
+        'hover:cursor-pointer hover:bg-neutral-100 hover:text-ui-text-900',
+        'relative flex cursor-default select-none items-center gap-x-2 bg-ui-bg-white px-3 py-2 text-ui-p text-ui-text-700 outline-none',
+        'transition-colors duration-200',
+        'data-[disabled]:opacity-50',
+        'data-[disabled]:pointer-events-none',
+        inset && 'pl-8',
+        className,
+      )}
+      {...props}
+    />
+  </motion.div>
 ))
 // eslint-disable-next-line unicorn/consistent-destructuring
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName

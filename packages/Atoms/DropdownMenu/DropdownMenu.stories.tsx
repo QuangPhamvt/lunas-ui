@@ -13,6 +13,9 @@ const meta: Meta<typeof DropdownMenu> = {
   title: 'Components/Atoms/DropdownMenu',
   component: DropdownMenu,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export default meta
